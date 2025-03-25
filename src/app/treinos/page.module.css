@@ -1,0 +1,257 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+    flex: 1;
+
+}
+
+
+.divPesquisas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px;
+}
+
+.divOrdenado{
+
+    height: 30px;
+}
+
+.divOrdenado select{
+    width: 120px;
+    color: var(--texto);
+    background-color: var(--diferenciadorE);
+    height: 100%;
+    border: solid var(--borda) 3px;
+}
+.divPesquisa{
+    margin-left: 10px;
+    width: 70dvw;
+    height: 40px;
+    position: relative;
+}
+
+.divOrdenado select option{
+    background-color: var(--fundo2);
+    color: var(--texto);
+}
+
+
+.divPesquisa input{
+    width: 100%;
+    color: var(--texto);
+    background-color: var(--diferenciadorE);
+    height: 100%;
+    border: solid var(--borda) 3px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+
+.divPesquisa input:focus{
+    border: solid var(--borda) 3px;
+
+}
+
+.divPesquisa Svg{
+    position: absolute;
+    right: 10px;
+    top: 7px;
+}
+
+.divInformacos{
+    background-color: var(--fundo1);
+    height: 60dvh;
+    width: 80dvw;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.divNomeCoisas{
+    height: 37px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+.divLinha{
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: var(--borda);
+    bottom: 0;
+}
+
+.divInfoCoisas{
+    align-items: center;
+    height: 37px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+
+.pMostrar{
+    font-weight: bolder;
+    font-size: 18px;
+}
+.divDeletar{
+    width: 25px;
+    height: 25px;
+    background-color: red;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.divAddTreinos{
+
+    width: 80dvw;
+    height: 50px;
+}
+
+.divAddTreinos button{
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: solid var(--borda) 2px;
+    color: var(--texto);
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.6s;
+    background-color: var(--fundoBtn);
+}
+
+.divCriaTreino{
+    padding: 10px;
+    position: absolute;
+    width: 350px;
+    height: 400px;
+    background-color: var(--fundo1);
+    border: 2px solid var(--borda);
+    border-radius: 10px;
+}
+
+.divCriaTreinoNome{
+    margin-bottom: 20px;
+    height: 10%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.divCriaTreinoNome p{
+    width: 15%;
+    font-size: 20px;
+}
+
+.divCriaTreinoNome input{
+    color: var(--texto);
+    background-color: var(--diferenciadorE);
+    border: solid var(--borda) 3px;
+    border-radius: 10px;
+    padding: 10px;
+    width: 80%;
+}
+
+.divCriaTreinoDescricao{
+    margin-bottom: 20px;
+    height: 30%;
+    font-size: 20px;
+}
+.divCriaTreinoDescricao input{
+    justify-content: start;
+    color: var(--texto);
+    background-color: var(--diferenciadorE);
+    border: solid var(--borda) 3px;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    height: 80%;
+}
+
+.divPassos{
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.divBotoes{
+    height: 40%;
+}
+
+.divColunaBtn1{
+    justify-content: space-between;
+    display: flex;
+}
+
+.divPassosBotoes{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.divBotoes button{
+    margin: 5px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: solid var(--borda) 2px;
+    color: var(--texto);
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.6s;
+    background-color: var(--fundoBtn);
+}
+
+.divCriaTreinoPasso{
+    margin-bottom: 20px;
+    height: 10%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.divCriaPassoNome input{
+    margin-left: 10px;
+    justify-content: start;
+    color: var(--texto);
+    background-color: var(--diferenciadorE);
+    border: solid var(--borda) 3px;
+    border-radius: 10px;
+    padding: 10px;
+    height: 80%;
+    width: 100%;
+}
+
+.teste{
+    margin-bottom: 20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.divColunaBtn3{
+    height: 35%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.divColunaBtn3 button{
+    width: 30%;
+    margin: 5px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: solid var(--borda) 2px;
+    color: var(--texto);
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.6s;
+    background-color: var(--fundoBtn);
+}

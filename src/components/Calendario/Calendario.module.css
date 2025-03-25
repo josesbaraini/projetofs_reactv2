@@ -1,0 +1,55 @@
+.diasDaSemana{
+    display: flex;
+}
+.diasDaSemana div{
+    width: 14.28%;
+}
+.cabeca{
+    display: flex;
+    justify-content: space-around;
+}
+
+.cabeca h1{
+    cursor: pointer;
+}
+.calendario{
+    width: 100%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+}
+.diaDoMes{
+    display: flex;
+    flex-wrap: wrap;
+}
+.diaE{
+    background-color: var(--fundo1);
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.diaEvento{
+    background-color: var(--contraste);
+    color: var(--fundo1);
+    cursor: pointer;
+}
+.diaFinalSemana{
+    background-color: var(--fundoBtn);
+}
+.dia{
+    display: flex;
+    width: 14.28%;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+}
+.diaDaSemana{
+    text-align: center;
+}
+.diaAtual{
+    border: solid var(--borda) 2px
+}
+

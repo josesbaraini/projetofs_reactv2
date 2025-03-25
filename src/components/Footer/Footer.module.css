@@ -1,0 +1,28 @@
+.footerContent{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100dvw;
+    height: 90%;
+}
+.sobre,.suporte,.infoContato{
+    width: 33dvw;
+    align-items: center;
+    justify-content: initial;
+    text-align: center;
+}
+
+.sobre p,.suporte p,.infoContato p{
+    font-size: 0.8rem;
+}
+
+.sobre h1,.suporte h1,.infoContato h1{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.footerBottom{
+    width: 100dvw;
+    font-weight: 600;
+    text-align: center;
+}
+

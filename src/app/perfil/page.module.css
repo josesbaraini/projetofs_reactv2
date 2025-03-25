@@ -1,0 +1,102 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    gap: 64px;
+    flex: 1;
+
+}
+
+.painel {
+    min-width: 350px;
+    max-width: 800px;
+    height: 65dvh;
+    width: 90dvw;
+    border-radius: 10px;
+    display: flex;
+    padding: 20px;
+    border: solid var(--borda) 2px;
+}
+
+.linha {
+    width: 380px;
+    border-bottom: solid var(--borda) 2px;
+    height: 1px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.nome {
+    width: 380px;
+}
+
+.coluna1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: initial;
+    gap: 20px;
+    min-width: 171px;
+}
+
+.conteudo {
+    height: 80%;
+    padding-top: 20px;
+}
+
+.opcoes {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--fundo1);
+    height: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid var(--borda) 2px;
+
+}
+
+.fotoPerfil svg {
+
+
+    background-color: var(--texto);
+    border-radius: 50%;
+    border: 4px solid var(--borda);
+    cursor: pointer;
+    margin-left: 1.5dvw;
+    margin-right: 0.5dvw;
+
+
+}
+
+.coluna2 {
+    padding: 10px;
+    width: 80%;
+}
+
+.opcao {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+.opcao:hover {
+    background-color: var(--diferenciadorC);
+}
+
+.barra {
+    position: absolute;
+    width: 5px;
+    left: -10px;
+    top: 0px;
+    height: 100%;
+    background-color: var(--contraste);
+    transition: 0.3s;
+}

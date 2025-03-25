@@ -1,0 +1,89 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 32px;
+    flex: 1;
+  
+  }
+
+.button{
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: solid var(--borda) 2px;
+    color: var(--texto);
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.6s;
+    background-color: var(--fundoBtn);
+}
+.painel table{
+    width: 100%;
+    height: 95%;
+    text-align: center;
+}
+.tdSituacao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+}
+.painel table td{
+
+    flex-direction: column;
+    border: solid var(--borda) 2px;
+}
+.button:hover{
+    background-color: var(--fundoBtnHover);
+    border: solid var(--fundoBtn) 2px;
+    transform: scale(1.005);
+    color: var(--contraste);
+}
+.painel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 350px;
+    height: 80dvh;
+    width: 80dvw;
+    background-color: var(--fundo1);
+    border-radius: 10px;
+    padding: 20px;
+    border: solid var(--borda) 2px;
+  }
+
+.posTabela{
+    height: 10%;
+ 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.botoes{
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+.botoes a{
+    font-weight: bold;
+    font-size: 15px;
+}
+.informacoes{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: start;
+}
+
+.situacao{
+    width: 35px;
+    height: 35px;
+    background-color: var(--superContraste);
+    border-radius: 50%; 
+    
+}

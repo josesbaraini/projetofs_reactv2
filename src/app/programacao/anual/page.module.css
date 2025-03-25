@@ -1,0 +1,42 @@
+.page{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 32px;
+    flex: 1;
+    width: 100dvw;
+
+
+}
+.divCalendarios{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.divCalendario{
+    width: 350px;
+    height: 290px;
+}
+
+
+.divCoisas{
+    margin: 20px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    height: 550px;
+}
+.divEventos{
+    margin-top: 10px;
+    flex-direction: column;
+    padding: 20px;
+    display: flex;
+    background-color: var(--fundo1);
+    border: 2px solid var(--borda);
+    border-radius: 10px;
+    width: 350px;
+    height: 200px;
+}
