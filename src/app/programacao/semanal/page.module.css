@@ -26,6 +26,7 @@
     flex-wrap: wrap;
     gap: 40px;
     justify-content: space-around;
+    
 }
 
 .dia {
@@ -35,6 +36,9 @@
     background-color: var(--fundo1);
     border: solid var(--borda) 2px;
     border-radius: 10px;
+    border: solid #ffffff 2px;
+
+
 }
 .diaTitulo {
     display: flex;
@@ -45,10 +49,13 @@
     text-align: center;
     z-index: -1;
     width: 60%;
-    height: 50px;
+    height: 55px;
     border-radius: 40px;
     border: solid var(--borda) 2px;
     background-color: var(--fundoBtn);
+    border: solid #ffffff 2px;
+    color:#ffffff;
+
 }
 
 .diaTituloatual{
@@ -60,6 +67,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 18px;
+    color:#ffffff;
 }
 .atual{
     background-color: var(--fundoBtn);

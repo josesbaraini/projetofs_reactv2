@@ -12,6 +12,7 @@ export default function programacaoSemanal() {
                     <div className={`${styles.dia} ${styles.atual}`}>
                         <div className={`${styles.diaTitulo} ${styles.diaTituloatual}`}><p>Segunda</p></div>
                         <div className={styles.treino}>
+                        <div className={styles.diaTitulo}><p>Segunda</p></div>
                             <p>Treino:</p>
                             <p className={styles.resposta}>Nenhum</p>
                         </div>

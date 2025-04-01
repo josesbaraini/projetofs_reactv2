@@ -24,12 +24,12 @@
 .painel {
     min-width: 350px;
     max-width: 500px;
-    height: 60dvh;
+    height: 35dvh;
     width: 50dvw;
     background-color: var(--fundo1);
-    border-radius: 10px;
-    padding: 20px;
-    border: solid var(--borda) 2px;
+    border-radius:10px;
+    padding: 25px;
+    border: solid #55835A 2px;
   }
 
 .painel form{
@@ -49,7 +49,8 @@
     border-radius: 15px;
     border: solid var(--borda) 2px;
     color: var(--texto);
-    background-color: var(--fundo2);
+    background-color: black;
+    border: solid #ffffff 2px;
 }
 
 .painel form button{
@@ -63,6 +64,7 @@
     font-weight: bold;
     transition: 0.6s;
     background-color: var(--fundoBtn);
+    border: solid #55835A 2px;
 }
 
 .painel form button:hover{

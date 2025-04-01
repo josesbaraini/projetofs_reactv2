@@ -1,20 +1,20 @@
 :root {
-  --fundo1: #143D19;
-  --fundo2: #B6FFBE;
+  --fundo1: #000000;
+  --fundo2: #C1DCC4;
   --contraste: #00FF1E;
-  --texto: #4AAC55;
-  --fundoBtn: #006F0D;
+  --texto: #ffffff;
+  --fundoBtn: #000000;
   --fundoBtnHover: #19A029;
-  --borda: #4A6F4E;
+  --borda: #000000;
   --bordax: #64FF76;
   --diferenciadorE: #00000020;
   --diferenciadorC: #ffffff20;
-  --superContraste: #FF00B2;
+  --superContraste: #ff0000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --fundo1: #4A6F4E;
+    --fundo1: #ffffff;
     --fundo2: #143D19;
     --contraste: #00FF1E;
     --texto: #B6FFBE;

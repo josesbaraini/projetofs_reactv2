@@ -20,11 +20,13 @@
 
 .divCalendario{
     width: 65dvw;
-    height: 80dvh;
+    height: 45dvh;
+    border: solid #fff 2px;
+    background-color: rgb(150, 150, 150);
 }
 
 .divEventosDoMes{
-    height: 60%;
+    height: 45%;
     text-align: center;
     width: 100%;
     background-color:  var(--fundo1);
