@@ -6,7 +6,7 @@ export default function Login() {
             <h1>MY GYM</h1>
            <div className={styles.painel}>
                 <form>
-                    <input type="text" placeholder="Digite seu Email" />
+                    <input type="text" placeholder="Digite seu Email"  />
                     <input type="password" placeholder="Digite sua Senha" />
                     <button type="submit">Login</button>
                 </form>

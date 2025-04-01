@@ -180,3 +180,8 @@ a.secondary {
     filter: invert();
   }
 }
+
+.par{
+  color: #fff;
+  padding:3px;
+}
