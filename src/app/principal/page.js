@@ -8,9 +8,9 @@ export default function Principal() {
                     <thead>
                         <tr>
                             <th>N°</th>
-                            <th>Exercicio</th>
-                            <th>Repeticoes</th>
-                            <th>Series</th>
+                            <th>Exercício</th>
+                            <th>Repetições</th>
+                            <th>Séries</th>
                             <th>Peso</th>
                             <th>Tempo</th>
                             <th>Estado</th>
