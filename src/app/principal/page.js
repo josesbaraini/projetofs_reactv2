@@ -19,8 +19,8 @@ export default function Principal() {
                     <tbody>
                         <tr>
                             <td className={styles.tdN}>1</td>
-                            <td className={styles.tdExercicio}>Agachamento</td>
-                            <td className={styles.tdRepeticoes}>10</td>
+                            <td className={styles.tdExercicio}>-</td>
+                            <td className={styles.tdRepeticoes}>-</td>
                             <td className={styles.tdSeries}>3</td>
                             <td className={styles.tdPeso}>100kg</td>
                             <td className={styles.tdTempo}>49:23</td>
@@ -28,8 +28,8 @@ export default function Principal() {
                         </tr>
                         <tr>
                             <td className={styles.tdN}>2</td>
-                            <td className={styles.tdExercicio}>Agachamento</td>
-                            <td className={styles.tdRepeticoes}>10</td>
+                            <td className={styles.tdExercicio}>-</td>
+                            <td className={styles.tdRepeticoes}>-</td>
                             <td className={styles.tdSeries}>3</td>
                             <td className={styles.tdPeso}>100kg</td>
                             <td className={styles.tdTempo}>88:32</td>
@@ -37,8 +37,8 @@ export default function Principal() {
                         </tr>
                         <tr>
                             <td className={styles.tdN}>1</td>
-                            <td className={styles.tdExercicio}>Agachamento</td>
-                            <td className={styles.tdRepeticoes}>10</td>
+                            <td className={styles.tdExercicio}>-</td>
+                            <td className={styles.tdRepeticoes}>-</td>
                             <td className={styles.tdSeries}>3</td>
                             <td className={styles.tdPeso}>100kg</td>
                             <td className={styles.tdTempo}>49:23</td>
@@ -46,8 +46,8 @@ export default function Principal() {
                         </tr>
                         <tr>
                             <td className={styles.tdN}>2</td>
-                            <td className={styles.tdExercicio}>Agachamento</td>
-                            <td className={styles.tdRepeticoes}>10</td>
+                            <td className={styles.tdExercicio}>-</td>
+                            <td className={styles.tdRepeticoes}>-</td>
                             <td className={styles.tdSeries}>3</td>
                             <td className={styles.tdPeso}>100kg</td>
                             <td className={styles.tdTempo}>88:32</td>
@@ -55,8 +55,8 @@ export default function Principal() {
                         </tr>
                         <tr>
                             <td className={styles.tdN}>1</td>
-                            <td className={styles.tdExercicio}>Agachamento</td>
-                            <td className={styles.tdRepeticoes}>10</td>
+                            <td className={styles.tdExercicio}>-</td>
+                            <td className={styles.tdRepeticoes}>-</td>
                             <td className={styles.tdSeries}>3</td>
                             <td className={styles.tdPeso}>100kg</td>
                             <td className={styles.tdTempo}>49:23</td>
@@ -64,8 +64,8 @@ export default function Principal() {
                         </tr>
                         <tr>
                             <td className={styles.tdN}>2</td>
-                            <td className={styles.tdExercicio}>Agachamento</td>
-                            <td className={styles.tdRepeticoes}>10</td>
+                            <td className={styles.tdExercicio}>-</td>
+                            <td className={styles.tdRepeticoes}>-</td>
                             <td className={styles.tdSeries}>3</td>
                             <td className={styles.tdPeso}>100kg</td>
                             <td className={styles.tdTempo}>88:32</td>
@@ -73,8 +73,8 @@ export default function Principal() {
                         </tr>
                         <tr>
                             <td className={styles.tdN}>2</td>
-                            <td className={styles.tdExercicio}>Agachamento</td>
-                            <td className={styles.tdRepeticoes}>10</td>
+                            <td className={styles.tdExercicio}>-</td>
+                            <td className={styles.tdRepeticoes}>-</td>
                             <td className={styles.tdSeries}>3</td>
                             <td className={styles.tdPeso}>100kg</td>
                             <td className={styles.tdTempo}>88:32</td>

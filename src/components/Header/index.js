@@ -34,7 +34,7 @@ const Header = () => {
     if (!isLogged) {
         return (<header className={styles.header}>
             <div onClick={() => router.push('/principal')}  className={styles.logo}>
-                <Image  src='/images/logo.png' alt='logo' width={60} height={60} />
+                <Image src='/images/logo.png' alt='logo' width={70} height={70} />
             </div>
             <nav className={styles.nav}>
             <ul className={styles.ul}>
