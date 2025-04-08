@@ -21,63 +21,63 @@ export default function Principal() {
                             <td className={styles.tdN}>1</td>
                             <td className={styles.tdExercicio}>-</td>
                             <td className={styles.tdRepeticoes}>-</td>
-                            <td className={styles.tdSeries}>3</td>
-                            <td className={styles.tdPeso}>100kg</td>
-                            <td className={styles.tdTempo}>49:23</td>
+                            <td className={styles.tdSeries}>-</td>
+                            <td className={styles.tdPeso}>-</td>
+                            <td className={styles.tdTempo}>-</td>
                             <td className={styles.tdSituacao}><div className={styles.situacao}></div></td>
                         </tr>
                         <tr>
                             <td className={styles.tdN}>2</td>
                             <td className={styles.tdExercicio}>-</td>
                             <td className={styles.tdRepeticoes}>-</td>
-                            <td className={styles.tdSeries}>3</td>
-                            <td className={styles.tdPeso}>100kg</td>
-                            <td className={styles.tdTempo}>88:32</td>
+                            <td className={styles.tdSeries}>-</td>
+                            <td className={styles.tdPeso}>-</td>
+                            <td className={styles.tdTempo}>-</td>
                             <td className={styles.tdSituacao}><div className={styles.situacao}></div></td>
                         </tr>
                         <tr>
                             <td className={styles.tdN}>1</td>
                             <td className={styles.tdExercicio}>-</td>
                             <td className={styles.tdRepeticoes}>-</td>
-                            <td className={styles.tdSeries}>3</td>
-                            <td className={styles.tdPeso}>100kg</td>
-                            <td className={styles.tdTempo}>49:23</td>
+                            <td className={styles.tdSeries}>-</td>
+                            <td className={styles.tdPeso}>-</td>
+                            <td className={styles.tdTempo}>-</td>
                             <td className={styles.tdSituacao}><div className={styles.situacao}></div></td>
                         </tr>
                         <tr>
                             <td className={styles.tdN}>2</td>
                             <td className={styles.tdExercicio}>-</td>
                             <td className={styles.tdRepeticoes}>-</td>
-                            <td className={styles.tdSeries}>3</td>
-                            <td className={styles.tdPeso}>100kg</td>
-                            <td className={styles.tdTempo}>88:32</td>
+                            <td className={styles.tdSeries}>-</td>
+                            <td className={styles.tdPeso}>-</td>
+                            <td className={styles.tdTempo}>-</td>
                             <td className={styles.tdSituacao}><div className={styles.situacao}></div></td>
                         </tr>
                         <tr>
                             <td className={styles.tdN}>1</td>
                             <td className={styles.tdExercicio}>-</td>
                             <td className={styles.tdRepeticoes}>-</td>
-                            <td className={styles.tdSeries}>3</td>
-                            <td className={styles.tdPeso}>100kg</td>
-                            <td className={styles.tdTempo}>49:23</td>
+                            <td className={styles.tdSeries}>-</td>
+                            <td className={styles.tdPeso}>-</td>
+                            <td className={styles.tdTempo}>-</td>
                             <td className={styles.tdSituacao}><div className={styles.situacao}></div></td>
                         </tr>
                         <tr>
                             <td className={styles.tdN}>2</td>
                             <td className={styles.tdExercicio}>-</td>
                             <td className={styles.tdRepeticoes}>-</td>
-                            <td className={styles.tdSeries}>3</td>
-                            <td className={styles.tdPeso}>100kg</td>
-                            <td className={styles.tdTempo}>88:32</td>
+                            <td className={styles.tdSeries}>-</td>
+                            <td className={styles.tdPeso}>-</td>
+                            <td className={styles.tdTempo}>-</td>
                             <td className={styles.tdSituacao}><div className={styles.situacao}></div></td>
                         </tr>
                         <tr>
                             <td className={styles.tdN}>2</td>
                             <td className={styles.tdExercicio}>-</td>
                             <td className={styles.tdRepeticoes}>-</td>
-                            <td className={styles.tdSeries}>3</td>
-                            <td className={styles.tdPeso}>100kg</td>
-                            <td className={styles.tdTempo}>88:32</td>
+                            <td className={styles.tdSeries}>-</td>
+                            <td className={styles.tdPeso}>-</td>
+                            <td className={styles.tdTempo}>-</td>
                             <td className={styles.tdSituacao}><div className={styles.situacao}></div></td>
                         </tr>
                     </tbody>
