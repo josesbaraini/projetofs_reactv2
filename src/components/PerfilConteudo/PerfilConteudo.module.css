@@ -1,6 +1,8 @@
 .opcao{
     display: flex;
     margin: 10px;
+    font-size: 20px;
+
     
 }
 .opcao p{
@@ -42,4 +44,6 @@
     background-color: var(--fundo2);
     color: var(--texto);
 }
+.selec{
 
+}
