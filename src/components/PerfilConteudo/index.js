@@ -8,23 +8,27 @@ export default function PerfilConteudo(props){
         return(
             <>
             <div className={styles.opcao}>
-                <p>Nome de usuário: Jacob Algun sobrenome ai</p>
+                <p>Nome de usuário:</p>
+                <input></input>
+                <Svg tipo='chenge'></Svg>
+            </div>
+            
+            <div className={styles.opcao}>
+                <p>Número de telefone: 
+                <input></input>(Verificado)</p>
                 <Svg tipo='chenge'></Svg>
             </div>
             <div className={styles.opcao}>
-                <p>Número de telefone: +55 ** *****-9389 (Verificado)</p>
+                <p>Endereço de e-mail: 
+                <input></input> (Verificado)</p>
                 <Svg tipo='chenge'></Svg>
             </div>
             <div className={styles.opcao}>
-                <p>Endereço de e-mail: j*************@gmail.com (Verificado)</p>
+                <p>Senha:<input></input> </p>
                 <Svg tipo='chenge'></Svg>
             </div>
             <div className={styles.opcao}>
-                <p>Senha: *****************</p>
-                <Svg tipo='chenge'></Svg>
-            </div>
-            <div className={styles.opcao}>
-                <p>Data de nascimento: 3 de abr. de 2000</p>
+                <p>Data de nascimento: <input></input> </p>
                 <Svg tipo='chenge'></Svg>
             </div>
             <div className={styles.opcao}>
@@ -50,11 +54,13 @@ export default function PerfilConteudo(props){
                 <div className={styles.areaBasica}>
                     <h1 className={styles.titulo}>Informações Básicas</h1>
                     <div className={styles.opcao}>
-                        <p>Altura: 180cm</p>
+                        <p>Altura: <input></input></p>
                         <Svg tipo='chenge'></Svg>
                     </div>
                     <div className={styles.opcao}>
-                        <p>Peso: 180Kg</p>
+                        <p>Peso: 
+                        <input></input>
+                        </p>
                         <Svg tipo='chenge'></Svg>
                     </div>
                     
@@ -63,19 +69,19 @@ export default function PerfilConteudo(props){
                 <div className={styles.areaAvancada}>
                     <h1 className={styles.titulo}>Informações Avançadas</h1>
                     <div className={styles.opcao}>
-                        <p>Imc: 1.99</p>
+                        <p>Imc:<input></input></p>
                         <Svg tipo='chenge'></Svg>
                     </div>
                     <div className={styles.opcao}>
-                        <p>Gordura corporal: 18%</p>
+                        <p>Gordura corporal: <input></input></p>
                         <Svg tipo='chenge'></Svg>
                     </div>
                     <div className={styles.opcao}>
-                        <p>Biotipo: Ectomorfo</p>
+                        <p>Biotipo: <input></input></p>
                         <Svg tipo='chenge'></Svg>
                     </div>
                     <div className={styles.opcao}>
-                        <p>Taxa de Metabolismo Basal: 2000kal/dia.</p>
+                        <p>Taxa de Metabolismo Basal: <input></input>/dia.</p>
                         <Svg tipo='chenge'></Svg>
                     </div>
 
