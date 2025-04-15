@@ -34,7 +34,8 @@ const Header = () => {
     if (!isLogged) {
         return (<header className={styles.header}>
             <div onClick={() => router.push('/principal')}  className={styles.logo}>
-                <Image src='/images/logo.png' alt='logo' width={70} height={70} />
+                <Image src='/images/logo.png' alt='logo' width={100} height={100} />
+                 
             </div>
             <nav className={styles.nav}>
             <ul className={styles.ul}>
@@ -86,8 +87,10 @@ const Header = () => {
                 </div>
                 <div className={abaUtilidades}>
                     <div className={styles.abaUtilidadesItem}>
+                   
                     <Svg tipo='userU'></Svg>
                         <h1>Perfil</h1>
+                    
                     </div>
                     <div className={styles.abaUtilidadesItem}>
                         <Svg tipo='logout'></Svg>

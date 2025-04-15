@@ -19,7 +19,7 @@ export default function Principal() {
                     <tbody>
                         <tr>
                             <td className={styles.tdN}>1</td>
-                            <td className={styles.tdExercicio}>-</td>
+                            <td className={styles.tdExercicio}>Clique</td>
                             <td className={styles.tdRepeticoes}>-</td>
                             <td className={styles.tdSeries}>-</td>
                             <td className={styles.tdPeso}>-</td>
@@ -91,8 +91,8 @@ export default function Principal() {
                         <a href="/cadastro">Usar Outra Lista de Treinos</a>
                     </div>
                     <div className={styles.informacoes}>
-                        <p>Nome do Treino: treino ai paizao</p>
-                        <p>Tempo medio do treino: 10 segundos</p>
+                        <p>Nome do Treino:-</p>
+                        <p>Tempo medio do treino:- </p>
                     </div>
                 </div>
             </div>
