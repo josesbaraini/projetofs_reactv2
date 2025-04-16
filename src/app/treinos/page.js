@@ -34,11 +34,12 @@ export default function Treinos() {
                     <h1>Descrição</h1>
                     <h1>Anotações</h1>
                     <h1>Deletar</h1>
+                        
                     <div className={styles.divLinha}></div>
                 </div>
                 {infos.map((info, index) => <div key={index} className={styles.divInfoCoisas}>
                     <p>{info.nome}</p>
-                    <p className={styles.pMostrar}>Mostrar
+                    <p className={styles.pMostrar}>-
                     </p>
                     <p>{info.mod}</p>
                     <p>{info.decricao}</p>
