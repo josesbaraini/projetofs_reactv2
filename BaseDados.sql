@@ -11,13 +11,14 @@ create table Usuarios(
     telefone varchar(255),
     senha varchar(255) not null,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    data_nascimento date,
     role ENUM('user', 'admin') DEFAULT 'user'
 );
 
-insert INTO Usuarios(nome,email,telefone,senha,role) values
-('José Sbaraini', "josesbarainips@gmail.com","(99) 99999-9999",
+insert INTO Usuarios(nome,created_at,data_nascimento,email,telefone,senha,role) values
+('José Sbaraini','2025-04-15 20:47:28','2007-04-03', "josesbarainips@gmail.com","(99) 99999-9999",
 '$2b$10$qGL2HbPN4Tc8Z2ZKX7Zc3.d97UYfM8UGb.PKWGdIHfTyIU4BqU5n6','admin'),
-('Beatriz Baltazar', "algumacoisa@gmail.com","(88) 88888-8888",
+('Beatriz Baltazar','2025-04-15 20:47:28','2007-04-03',"algumacoisa@gmail.com","(88) 88888-8888",
 '$2b$10$K3ey15y6t6YVnw4UM5tFhuOZkE/D778URPOj/fzKN316kohJBisi.','admin');
 -- Treinos table
 
@@ -61,7 +62,7 @@ select * from Eventos;
 
 -- Evento table
 create table Eventos(
-    Usuario_id int,
+    Usuario_id int not NULL,
     nome varchar(255),
     descricao varchar(255),
     data DATE,
