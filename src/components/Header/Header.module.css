@@ -21,7 +21,9 @@ flex-grow: 7;
 }
 .logo{
     height: 100%;
+    
     cursor: pointer;
+   
 }
 .li h1:hover{
     color: var(--constraste);
