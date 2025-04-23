@@ -86,7 +86,7 @@ const Header = () => {
 
                 </div>
                 <div className={abaUtilidades}>
-                    <div className={styles.abaUtilidadesItem}>
+                    <div onClick={() => router.push('/perfil')} className={styles.abaUtilidadesItem}>
                    
                     <Svg tipo='userU'></Svg>
                         <h1>Perfil</h1>

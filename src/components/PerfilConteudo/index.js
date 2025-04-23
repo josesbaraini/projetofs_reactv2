@@ -41,7 +41,7 @@ export default function PerfilConteudo(props){
             <div className={styles.opcao}>
                 <p>Tema</p>
                 <select>
-                    <option value="1">Automatico</option>
+                    <option value="1">Automático</option>
                     <option value="2">Claro</option>
                     <option value="3">Escuro</option>
                 </select>
