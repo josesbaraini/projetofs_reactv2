@@ -1,11 +1,11 @@
 'use client'
 import styles from "./page.module.css";
-
+import StatusGate from "@/components/StatusGate";
 import { useEffect } from "react";
 
 export default function Notificacoes() {
-
-  return (
+         
+  return (<StatusGate> 
     <div className={styles.page}>
       <div className={styles.divcompleta}>
         <div className={styles.assunto}>
@@ -85,5 +85,5 @@ export default function Notificacoes() {
   
       
     </div>
-  );
+    </StatusGate>);
 }

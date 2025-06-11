@@ -1,8 +1,8 @@
 import styles from './page.module.css'
-
+import StatusGate from "@/components/StatusGate";
 export default function Principal() {
     return (
-        <div className={styles.page}>
+        <StatusGate> <div className={styles.page}>
             <div className={styles.painel}>
                 <table>
                     <thead>
@@ -96,6 +96,6 @@ export default function Principal() {
                     </div>
                 </div>
             </div>
-        </div>
+             </div></StatusGate>
     )
 }

@@ -3,9 +3,10 @@ import styles from './page.module.css'
 import Svg from '@/components/svg'
 import { useState } from 'react';
 import PerfilConteudo from '@/components/PerfilConteudo';
+import StatusGate from "@/components/StatusGate";
 export default function Perfil() {
     const [opcao, setOpcao] = useState(1);
-    return (
+    return (<StatusGate> 
         <div className={styles.page}>
             <div className={styles.painel}>
                 <div className={styles.coluna1}>
@@ -44,5 +45,5 @@ export default function Perfil() {
                 </div>
             </div>
         </div>
-    ) 
+        </StatusGate> ) 
 }

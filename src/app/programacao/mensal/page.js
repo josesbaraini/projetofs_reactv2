@@ -3,9 +3,10 @@ import { useState } from "react";
 import styles from "./page.module.css";
 import dayjs from "dayjs";
 import Calendario from "@/components/Calendario";
+import StatusGate from "@/components/StatusGate";
 
 export default function programacaoMensal() {
-    return(
+    return(<StatusGate>
       <div className={styles.page}>
         <div className={styles.divCalendario}>
           <Calendario
@@ -27,5 +28,6 @@ export default function programacaoMensal() {
         </div>
 
       </div>
+      </StatusGate>
     )
 }

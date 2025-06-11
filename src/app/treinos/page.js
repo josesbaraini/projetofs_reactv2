@@ -1,17 +1,51 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './page.module.css'
 import Svg from "@/components/svg";
+import StatusGate from "@/components/StatusGate";
 export default function Treinos() {
-    const [infos, setInfos] = useState([
-        { 'nome': 'umNomeai', 'planejamento': '', 'mod': '20/12/02', 'decricao': 'Uma descrição ai', 'anotacoes': 'umas anoyações ai', 'deletar': '1' },
-        { 'nome': 'umNomeai', 'planejamento': '', 'mod': '20/12/02', 'decricao': 'Uma descrição ai', 'anotacoes': 'umas anoyações ai', 'deletar': '2' },
-        { 'nome': 'umNomeai', 'planejamento': '', 'mod': '20/12/02', 'decricao': 'Uma descrição ai', 'anotacoes': 'umas anoyações ai', 'deletar': '3' },
-        { 'nome': 'umNomeai', 'planejamento': '', 'mod': '20/12/02', 'decricao': 'Uma descrição ai', 'anotacoes': 'umas anoyações ai', 'deletar': '4' }
-    ])
+    const [dados, setdados] = useState(
+        {
+        "userId": 2
+        }
+)
+    const getTreinos = async () =>{
+        let entrada = dados;
+        const response = await fetch('http://localhost:8000/api/treinos/user',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(entrada)
+            
+        });
+        console.log(response)
+        if (!response.ok) {
+            setInfos([
+                {
+                    "id": 6,
+                    "modificacao_em": "2025-05-04T15:57:20.000Z",
+                    "nome": "treino foda",
+                    "descricao": "2",
+                    "anotacoes": "4",
+                    "Usuario_id": 2
+                }
+            ])
+            }
+            
+        const data = await response.json();
+        setInfos(data);
+        console.log(data)
+    }
+
+    useEffect(()=>{
+        getTreinos();
+    },[]);
+    const [infos, setInfos] = useState([])
+
     const [passos, setPassos] = useState(['passo1', 'passo2', 'pass'])
 
-    return (
+    return (<StatusGate>
         <div className={styles.page}>
             <div className={styles.divPesquisas}>
                 <div className={styles.divOrdenado}>
@@ -37,16 +71,16 @@ export default function Treinos() {
                         
                     <div className={styles.divLinha}></div>
                 </div>
-                {infos.map((info, index) => <div key={index} className={styles.divInfoCoisas}>
+                { infos ? infos.map((info, index) => <div key={index} className={styles.divInfoCoisas}>
                     <p>{info.nome}</p>
                     <p className={styles.pMostrar}>-
                     </p>
-                    <p>{info.mod}</p>
-                    <p>{info.decricao}</p>
+                    <p>{info.modificacao_em}</p>
+                    <p>{info.descricao}</p>
                     <p>{info.anotacoes}</p>
                     <p className={styles.divDeletar}></p>
                     <div className={styles.divLinha}></div>
-                </div>)}
+                </div>):''}
 
 
             </div>
@@ -118,5 +152,6 @@ export default function Treinos() {
 
             </div> */}
         </div>
+        </StatusGate>
     )
 }

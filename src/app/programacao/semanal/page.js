@@ -1,8 +1,8 @@
 'use client'
 import styles from './page.module.css'
-
+import StatusGate from "@/components/StatusGate";
 export default function programacaoSemanal() {
-    return (
+    return (<StatusGate>
         <div className={styles.page}>
             <div className={styles.cima}>
                 <p>Data: 13/03/2025</p>
@@ -78,5 +78,6 @@ export default function programacaoSemanal() {
                     </div>
             </div>
         </div>
+        </StatusGate>
     )
 }
