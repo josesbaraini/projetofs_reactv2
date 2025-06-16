@@ -1,6 +1,6 @@
 :root {
   --fundo1: #000000;
-  --fundo2:#C1DCC4;  
+  --fundo2: #C1DCC4;
   --contraste: #00FF1E;
   --texto: #ffffff;
   --fundoBtn: #000000;
@@ -14,20 +14,21 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --fundo1: #ffffff;
-    --fundo2: #143D19;
+    --fundo1: #000000;
+    --fundo2: #C1DCC4;
     --contraste: #00FF1E;
-    --texto: #B6FFBE;
-    --fundoBtn: #19A029;
-    --fundoBtnHover: #006F0D;
-    --borda: #64FF76;
-    --bordax: #4A6F4E;
+    --texto: #ffffff;
+    --fundoBtn: #000000;
+    --fundoBtnHover: #19A029;
+    --borda: #000000;
+    --bordax: #64FF76;
     --diferenciadorE: #00000020;
     --diferenciadorC: #ffffff20;
-    --superContraste: #FF0040;
+    --superContraste: #ff0000;
   }
 }
-header{
+
+header {
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -36,6 +37,7 @@ header{
   width: 100dvw;
   background-color: var(--fundo1);
 }
+
 html,
 body {
   max-width: 100vw;
@@ -53,20 +55,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  
+
 }
 
 .body::-webkit-scrollbar {
   display: none;
 }
 
-footer{
+footer {
   display: flex;
   flex-direction: column;
   height: 30dvh;
   width: 100dvw;
-  background-color: var(--fundo1); 
+  background-color: var(--fundo1);
 }
+
 * {
   box-sizing: border-box;
   padding: 0;

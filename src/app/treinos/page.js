@@ -11,7 +11,7 @@ export default function Treinos() {
 )
     const getTreinos = async () =>{
         let entrada = dados;
-        const response = await fetch('http://localhost:8000/api/treinos/user',{
+        const response = await fetch('https://mygymapi.dev.vilhena.ifro.edu.br/api/treinos/user',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

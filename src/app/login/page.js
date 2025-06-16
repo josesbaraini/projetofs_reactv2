@@ -1,19 +1,64 @@
-import styles from './page.module.css'
+'use client'
+import styles from './page.module.css';
+import { useState } from 'react';
 
 export default function Login() {
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+    const [mensagem, setMensagem] = useState('');
+    const handleLogin = async (e) => {
+        e.preventDefault();
+
+        try {
+            console.log(senha, email)
+            const response = await fetch('https://mygymapi.dev.vilhena.ifro.edu.br/api/user/login', {
+                method: 'POST',
+                credentials:"include",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, senha }),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setMensagem('Login bem-sucedido! Bem-vindo.');
+                // Aqui você pode redirecionar, guardar token, etc.
+            } else {
+                setMensagem('Email ou senha inválidos.');
+            }
+        } catch (error) {
+            console.error('Erro ao fazer login:', error);
+            setMensagem('Erro ao conectar com o servidor.');
+        }
+    };
     return (
         <div className={styles.page}>
             <h1>MY GYM</h1>
-           <div className={styles.painel}>
-                <form>
-                    <input type="text" placeholder="Digite seu Email"  />
-                    <input type="password" placeholder="Digite sua Senha" />
+            <div className={styles.painel}>
+                <form onSubmit={handleLogin}>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Senha"
+                        value={senha}
+                        onChange={(e) => setSenha(e.target.value)}
+                        required
+                    />
                     <button type="submit">Login</button>
                 </form>
+                {mensagem && <p>{mensagem}</p>}
                 <div className={styles.aviso}>
                     <p>Não tem uma conta? <a href="/cadastro">Cadastre-se</a></p>
                 </div>
-           </div>
+            </div>
         </div>
     )
 }
