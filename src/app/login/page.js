@@ -22,9 +22,8 @@ export default function Login() {
 
             const data = await response.json();
 
-            if (data.success) {
+            if (data.mensagem == "Logado com sucesso") {
                 setMensagem('Login bem-sucedido! Bem-vindo.');
-                // Aqui você pode redirecionar, guardar token, etc.
             } else {
                 setMensagem('Email ou senha inválidos.');
             }
