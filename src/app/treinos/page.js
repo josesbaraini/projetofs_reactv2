@@ -3,23 +3,35 @@ import { useEffect, useState } from 'react';
 import styles from './page.module.css'
 import Svg from "@/components/svg";
 import StatusGate from "@/components/StatusGate";
+import { useUser } from '@/components/UserContext';
+
 export default function Treinos() {
-    const [dados, setdados] = useState(
-        {
-        "userId": 2
-        }
-)
-    const getTreinos = async () =>{
-        let entrada = dados;
-        const response = await fetch('https://mygymapi.dev.vilhena.ifro.edu.br/api/treinos/user',{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(entrada)
-            
+    return (
+        <StatusGate>
+            <TreinosConteudo />
+        </StatusGate>
+    );
+}
+function TreinosConteudo() {
+    const usuario = useUser();
+    const [infos, setInfos] = useState([]);
+    const [passos, setPassos] = useState(['passo1', 'passo2', 'pass']);
+
+    // Função para formatar a data
+    function formatarData(dataISO) {
+        if (!dataISO) return '';
+        const data = new Date(dataISO);
+        const dia = String(data.getDate()).padStart(2, '0');
+        const mes = String(data.getMonth() + 1).padStart(2, '0');
+        const ano = data.getFullYear();
+        const hora = String(data.getHours() - 4).padStart(2, '0');
+        const min = String(data.getMinutes()).padStart(2, '0');
+        return `${dia}/${mes}/${ano} ${hora}:${min}`;
+    }
+
+    const getTreinos = async () => {
+        const response = await fetch(`https://mygymapi.dev.vilhena.ifro.edu.br/api/treinos/user/${usuario.id}`, {
         });
-        console.log(response)
         if (!response.ok) {
             setInfos([
                 {
@@ -31,21 +43,18 @@ export default function Treinos() {
                     "Usuario_id": 2
                 }
             ])
-            }
-            
+        }
         const data = await response.json();
         setInfos(data);
         console.log(data)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
+        console.log(usuario)
         getTreinos();
-    },[]);
-    const [infos, setInfos] = useState([])
+    }, []);
 
-    const [passos, setPassos] = useState(['passo1', 'passo2', 'pass'])
-
-    return (<StatusGate>
+    return (
         <div className={styles.page}>
             <div className={styles.divPesquisas}>
                 <div className={styles.divOrdenado}>
@@ -68,29 +77,24 @@ export default function Treinos() {
                     <h1>Descrição</h1>
                     <h1>Anotações</h1>
                     <h1>Deletar</h1>
-                        
                     <div className={styles.divLinha}></div>
                 </div>
-                { infos ? infos.map((info, index) => <div key={index} className={styles.divInfoCoisas}>
+                {infos ? infos.map((info, index) => <div key={index} className={styles.divInfoCoisas}>
                     <p>{info.nome}</p>
                     <p className={styles.pMostrar}>-
                     </p>
-                    <p>{info.modificacao_em}</p>
+                    <p>{formatarData(info.modificacao_em)}</p>
                     <p>{info.descricao}</p>
                     <p>{info.anotacoes}</p>
                     <p className={styles.divDeletar}></p>
                     <div className={styles.divLinha}></div>
-                </div>):''}
-
-
+                </div>) : ''}
             </div>
             <div className={styles.divAddTreinos}>
                 <button>
                     Adicionar Treino
                 </button>
-
             </div>
-
             {/* <div className={styles.divCriaTreino}>
                 <div className={styles.divCriaTreinoNome}>
                     <p>Nome:</p>
@@ -152,6 +156,5 @@ export default function Treinos() {
 
             </div> */}
         </div>
-        </StatusGate>
-    )
+    );
 }
