@@ -10,7 +10,7 @@
 }
 
 
-.divPesquisas{
+.divPesquisas {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,32 +18,33 @@
     margin: 20px;
 }
 
-.divOrdenado{
+.divOrdenado {
 
     height: 30px;
 }
 
-.divOrdenado select{
+.divOrdenado select {
     width: 120px;
     color: var(--texto);
     background-color: var(--diferenciadorE);
     height: 100%;
     border: solid var(--borda) 3px;
 }
-.divPesquisa{
+
+.divPesquisa {
     margin-left: 10px;
     width: 70dvw;
     height: 40px;
     position: relative;
 }
 
-.divOrdenado select option{
+.divOrdenado select option {
     background-color: var(--fundo2);
     color: var(--texto);
 }
 
 
-.divPesquisa input{
+.divPesquisa input {
     width: 100%;
     color: var(--texto);
     background-color: var(--diferenciadorE);
@@ -54,18 +55,18 @@
 }
 
 
-.divPesquisa input:focus{
+.divPesquisa input:focus {
     border: solid var(--borda) 3px;
 
 }
 
-.divPesquisa Svg{
+.divPesquisa Svg {
     position: absolute;
     right: 10px;
     top: 7px;
 }
 
-.divInformacos{
+.divInformacos {
     background-color: var(--fundo1);
     height: 45dvh;
     width: 80dvw;
@@ -76,16 +77,17 @@
 
 }
 
-.divNomeCoisas{
+.divNomeCoisas {
     height: 37px;
     position: relative;
     display: flex;
     justify-content: space-around;
     font-size: 10px;
 
-    
+
 }
-.divLinha{
+
+.divLinha {
     position: absolute;
     width: 100%;
     height: 3px;
@@ -93,7 +95,7 @@
     bottom: 0;
 }
 
-.divInfoCoisas{
+.divInfoCoisas {
     align-items: center;
     height: 37px;
     position: relative;
@@ -101,11 +103,12 @@
     justify-content: space-around;
 }
 
-.pMostrar{
+.pMostrar {
     font-weight: bolder;
     font-size: 18px;
 }
-.divDeletar{
+
+.divDeletar {
     width: 25px;
     height: 25px;
     background-color: red;
@@ -113,13 +116,13 @@
     cursor: pointer;
 }
 
-.divAddTreinos{
+.divAddTreinos {
 
     width: 80dvw;
     height: 50px;
 }
 
-.divAddTreinos button{
+.divAddTreinos button {
     width: 150px;
     height: 30px;
     cursor: pointer;
@@ -132,133 +135,228 @@
     background-color: var(--fundoBtn);
 }
 
-.divCriaTreino{
-    padding: 10px;
+.divCriaTreino {
+    padding: 20px;
     position: absolute;
-    width: 350px;
-    height: 400px;
+    width: 400px;
+    height: 450px;
     background-color: var(--fundo1);
+    border: 3px solid white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    left: 2vw;
+    top: 5vh;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px var(--borda);
+}
+
+.divCriaTreinoNome {
+    margin-bottom: 10px;
+    height: 10%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.divCriaTreinoNome p {
+    width: 20%;
+    font-size: 18px;
+}
+
+.divCriaTreinoNome input,
+.divCriaTreinoDescricao input,
+.divCriaTreino input,
+.teste input {
+    color: var(--texto);
+    background-color: rgba(172, 172, 172, 0.267);
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.divCriaTreinoNome input:focus,
+.divCriaTreinoDescricao input:focus,
+.divCriaTreino input:focus,
+.teste input:focus {
     border: 2px solid var(--borda);
-    border-radius: 10px;
+    box-shadow: 0 0 4px var(--borda);
 }
 
-.divCriaTreinoNome{
-    margin-bottom: 20px;
-    height: 10%;
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+.divCriaTreinoDescricao input {
+    height: 70px;
+    resize: none;
 }
 
-.divCriaTreinoNome p{
-    width: 15%;
-    font-size: 20px;
+.divCriaTreino input[type="text"] {
+    height: 40px;
 }
 
-.divCriaTreinoNome input{
-    color: var(--texto);
-    background-color: var(--diferenciadorE);
-    border: solid var(--borda) 3px;
-    border-radius: 10px;
-    padding: 10px;
-    width: 80%;
-}
-
-.divCriaTreinoDescricao{
-    margin-bottom: 20px;
-    height: 30%;
-    font-size: 20px;
-}
-.divCriaTreinoDescricao input{
-    justify-content: start;
-    color: var(--texto);
-    background-color: var(--diferenciadorE);
-    border: solid var(--borda) 3px;
-    border-radius: 10px;
-    padding: 10px;
-    width: 100%;
-    height: 80%;
-
-}
-
-.divPassos{
-    margin-bottom: 20px;
-    display: flex;
-}
-
-.divBotoes{
-    height: 40%;
-}
-
-.divColunaBtn1{
-    justify-content: space-between;
-    display: flex;
-}
-
-.divPassosBotoes{
-    height: 50%;
+.divCriaTreinoDescricao {
+    width: 40;
+    margin-bottom: 10px;
+    height: 25%;
+    font-size: 18px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 5px;
 }
 
-.divBotoes button{
-    margin: 5px;
-    height: 30px;
-    cursor: pointer;
-    border-radius: 15px;
-    border: solid var(--borda) 2px;
+
+.divPassosBotoes {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.divPassos {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.divBotoes {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.divColunaBtn1,
+.divColunaBtn2 {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.divColunaBtn1 button,
+.divColunaBtn2 button {
+    border-radius: 10px;
+    border: 2px solid var(--borda);
+    background-color: var(--fundoBtn);
     color: var(--texto);
     font-size: 15px;
     font-weight: bold;
-    transition: 0.6s;
-    background-color: var(--fundoBtn);
+    padding: 6px 16px;
+    transition: 0.3s;
+    margin-top: 0;
+    cursor: pointer;
 }
 
-.divCriaTreinoPasso{
-    margin-bottom: 20px;
-    height: 10%;
-    align-items: center;
+.divColunaBtn1 button:disabled,
+.divColunaBtn2 button:disabled {
+    opacity: 0.5;
+}
+
+.divCriaTreinoPasso {
+    padding: 20px;
+    position: absolute;
+    width: 400px;
+    height: 450px;
+    background-color: var(--fundo1);
+    border: 3px solid white;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-.divCriaPassoNome input{
-    margin-left: 10px;
-    justify-content: start;
-    color: var(--texto);
-    background-color: var(--diferenciadorE);
-    border: solid var(--borda) 3px;
-    border-radius: 10px;
-    padding: 10px;
-    height: 80%;
-    width: 100%;
+    gap: 10px;
+    left: calc(2vw + 420px);
+    top: 5vh;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px var(--borda);
 }
 
-.teste{
-    margin-bottom: 20px;
-    justify-content: center;
+.divCriaPassoNome {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.teste {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
-.divColunaBtn3{
-    height: 35%;
-    display: flex;
-    justify-content: end;
-    align-items: end;
-}
-
-.divColunaBtn3 button{
+.teste p {
     width: 30%;
-    margin: 5px;
-    height: 30px;
-    cursor: pointer;
-    border-radius: 15px;
-    border: solid var(--borda) 2px;
+    font-size: 18px;
+}
+
+.teste input {
+    color: var(--texto);
+    background-color: rgba(172, 172, 172, 0.267);
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 8px;
+    width: 70%;
+    font-size: 16px;
+}
+
+.divColunaBtn3 {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.divColunaBtn3 button {
+    border-radius: 10px;
+    border: 2px solid var(--borda);
+    background-color: var(--fundoBtn);
     color: var(--texto);
     font-size: 15px;
     font-weight: bold;
-    transition: 0.6s;
-    background-color: var(--fundoBtn);
+    padding: 6px 16px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.divColunaBtn3 button:disabled {
+    opacity: 0.5;
+}
+
+.btnFechar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--borda);
+    background: var(--fundoBtn);
+    color: var(--texto);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    z-index: 100;
+}
+
+.btnFechar:hover {
+    background: var(--borda);
+    color: var(--fundoBtn);
+    border: 2px solid var(--fundoBtn);
+}
+
+.divCriaTreinoNome input {
+    width: 75%;
+}
+
+.teste input {
+    width: 70%;
 }
