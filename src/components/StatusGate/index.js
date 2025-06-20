@@ -7,7 +7,7 @@ export default function StatusGate({ children }) {
   const [user, setUser] = useState({
         "id": 2,
         "email": "josesbarainips@gmail.com",
-        "role": "admin"
+        "role": "user"
     });
   const [status, setStatus] = useState("ok")
   const router = useRouter()
@@ -20,6 +20,7 @@ export default function StatusGate({ children }) {
         if (res.ok && data.ok) {
           setStatus("ok");
           setUser(data.user);
+          return
         }
         router.push('/login')
     };
