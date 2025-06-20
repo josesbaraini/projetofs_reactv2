@@ -47,8 +47,8 @@ function TreinosConteudo() {
     }
 
     const getTreinos = async () => {
-        const response = await fetch(`https://mygymapi.dev.vilhena.ifro.edu.br/api/treinos/user/${usuario.id}`, {
-        });
+        if (!usuario?.id) return;
+        const response = await fetch(`https://mygymapi.dev.vilhena.ifro.edu.br/api/treinos/user/${usuario.id}`);
         if (!response.ok) {
             setInfos([
                 {
@@ -67,9 +67,10 @@ function TreinosConteudo() {
     }
 
     useEffect(() => {
-        console.log(usuario)
-        getTreinos();
-    }, []);
+        if (usuario) {
+            getTreinos();
+        }
+    }, [usuario]);
 
     // Função para adicionar um passo ao array de passos
     function adicionarPasso() {
@@ -92,6 +93,10 @@ function TreinosConteudo() {
 
     // Função para montar o objeto do treino e fazer o POST
     async function montarTreino() {
+        if (!usuario?.id) {
+            setMensagem("Usuário não autenticado. Por favor, faça login novamente.");
+            return;
+        }
         const treino = {
             usuario_id: usuario.id,
             nome: treinoNome,
