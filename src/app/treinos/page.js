@@ -93,6 +93,7 @@ function TreinosConteudo() {
 
     // Função para montar o objeto do treino e fazer o POST
     async function montarTreino() {
+        console.log(usuario,!usuario?.id)
         if (!usuario?.id) {
             setMensagem("Usuário não autenticado. Por favor, faça login novamente.");
             return;
@@ -108,8 +109,10 @@ function TreinosConteudo() {
         setMensagem("");
         try {
             // Troque a URL abaixo pela sua rota de POST de treinos
+            console.log(treino)
             const response = await fetch("https://mygymapi.dev.vilhena.ifro.edu.br/api/treinos/cadastrar", {
                 method: "POST",
+                credentials:'include',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(treino)
             });
