@@ -4,6 +4,7 @@ import styles from './page.module.css'
 import Svg from "@/components/svg";
 import StatusGate from "@/components/StatusGate";
 import { useUser } from '@/components/UserContext';
+import apiRoutes from '@/utils/apiRoutes';
 
 export default function Treinos() {
     return (
@@ -13,7 +14,9 @@ export default function Treinos() {
     );
 }
 function TreinosConteudo() {
+    
     const usuario = useUser();
+    console.log(usuario)
     const [infos, setInfos] = useState([]);
     const [passos, setPassos] = useState([]);
     const [showCriaTreino, setShowCriaTreino] = useState(false);
@@ -48,7 +51,7 @@ function TreinosConteudo() {
 
     const getTreinos = async () => {
         if (!usuario?.id) return;
-        const response = await fetch(`https://mygymapi.dev.vilhena.ifro.edu.br/api/treinos/user/${usuario.id}`);
+        const response = await fetch(apiRoutes.getTreinos(usuario.id));
         if (!response.ok) {
             setInfos([
                 {
@@ -93,7 +96,7 @@ function TreinosConteudo() {
 
     // Função para montar o objeto do treino e fazer o POST
     async function montarTreino() {
-        console.log(usuario,!usuario?.id)
+        console.log(usuario, !usuario?.id)
         if (!usuario?.id) {
             setMensagem("Usuário não autenticado. Por favor, faça login novamente.");
             return;
@@ -108,13 +111,11 @@ function TreinosConteudo() {
         setCarregando(true);
         setMensagem("");
         try {
-            // Troque a URL abaixo pela sua rota de POST de treinos
-            console.log(treino)
-            const response = await fetch("https://mygymapi.dev.vilhena.ifro.edu.br/api/treinos/cadastrar", {
+            const response = await fetch(apiRoutes.cadastrarTreino, {
                 method: "POST",
-                credentials:'include',
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(treino)
+                body: JSON.stringify(treino),
+                credentials: 'include'
             });
             if (response.ok) {
                 setMensagem("Cadastro realizado com sucesso!");

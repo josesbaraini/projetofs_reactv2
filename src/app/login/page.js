@@ -1,6 +1,7 @@
 'use client'
 import styles from './page.module.css';
 import { useState } from 'react';
+import apiRoutes from '@/utils/apiRoutes';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -10,10 +11,9 @@ export default function Login() {
         e.preventDefault();
 
         try {
-            console.log(senha, email)
-            const response = await fetch('https://mygymapi.dev.vilhena.ifro.edu.br/api/user/login', {
+            const response = await fetch(apiRoutes.login, {
                 method: 'POST',
-                credentials:"include",
+                credentials: "include",
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -23,9 +23,10 @@ export default function Login() {
             const data = await response.json();
 
             if (data.mensagem == "Logado com sucesso") {
-                setMensagem('Login bem-sucedido! Bem-vindo.');
+                setMensagem('Login bem-sucedido! Redirecionando...');
+                window.location.href = '/principal';
             } else {
-                setMensagem('Email ou senha inválidos.');
+                setMensagem(data.mensagem || 'Email ou senha inválidos.');
             }
         } catch (error) {
             console.error('Erro ao fazer login:', error);

@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import StatusGate from "@/components/StatusGate";
 import { useEffect, useState } from "react";
 import { useUser } from "@/components/UserContext";
+import apiRoutes from "@/utils/apiRoutes";
 
 export default function Notificacoes() {
   return (
@@ -26,7 +27,8 @@ function NotificacoesConteudo() {
   ]);
 
   const getNotificacoes = async () => {
-    const response = await fetch(`https://mygymapi.dev.vilhena.ifro.edu.br/api/notificacoes/${usuario.id}`, {
+    if (!usuario?.id) return;
+    const response = await fetch(apiRoutes.getNotificacoes(usuario.id), {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -37,8 +39,10 @@ function NotificacoesConteudo() {
   };
 
   useEffect(() => {
-    getNotificacoes();
-  }, []);
+    if (usuario) {
+      getNotificacoes();
+    }
+  }, [usuario]);
 
   return (
     <div className={styles.page}>
