@@ -6,18 +6,35 @@
     padding: 20px;
     gap: 32px;
     flex: 1;
-  
-  }
+    background: linear-gradient(135deg, var(--fundo1) 0%, var(--fundo2) 100%);
 
-.page h1{
+}
+
+@keyframes glow {
+    from {
+        text-shadow:
+            0 0 20px rgba(255, 255, 255, 0.3),
+            0 0 40px rgba(255, 255, 255, 0.2),
+            0 0 60px rgba(255, 255, 255, 0.1);
+    }
+
+    to {
+        text-shadow:
+            0 0 30px rgba(255, 255, 255, 0.4),
+            0 0 50px rgba(255, 255, 255, 0.3),
+            0 0 70px rgba(255, 255, 255, 0.2);
+    }
+}
+
+.page h1 {
     font-size: 80px;
     font-weight: 1000;
     -webkit-text-stroke: 3px black;
     color: var(--texto);
-    text-shadow: 
+    text-shadow:
 
-    4px  4px 0 var(--contraste),
-    4px  4px 0 var(--contraste);
+        4px 4px 0 var(--contraste),
+        4px 4px 0 var(--contraste);
 }
 
 
@@ -27,55 +44,72 @@
     height: 35dvh;
     width: 50dvw;
     background-color: var(--fundo1);
-    border-radius:10px;
-    padding: 25px;
     border: solid #ffffff 2px;
-  }
+    border-radius: 10px;
+    padding: 25px;
 
-.painel form{
+}
+
+.painel form {
     height: 90%;
-    display: flex;  
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: initial;
     gap: 10px;
 }
 
-.painel form input{
-  
+.painel form input {
+
     margin: 10px;
     width: 90%;
     height: 40px;
     border-radius: 15px;
-    border: solid var(--borda) 2px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     color: var(--texto);
-    background-color: black;
-    border: solid #ffffff 2px;
+    background: rgba(255, 255, 255, 0.05);
+
 }
 
-.painel form button{
+.painel form button {
     cursor: pointer;
     width: 40%;
     height: 60px;
     border-radius: 15px;
-    border: solid var(--borda) 2px;
+    border: 2px solid var(--borda);
     color: var(--texto);
     font-size: 25px;
     font-weight: bold;
     transition: 0.6s;
-    background-color: var(--fundoBtn);
+    background: linear-gradient(135deg, var(--fundoBtn) 0%, var(--fundoBtnHover) 100%);
     border: solid #ffffff 2px;
+    position: relative;
+    overflow: hidden;
 }
 
-.painel form button:hover{
-    background-color: var(--fundoBtnHover);
+.painel form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.painel form button:hover::before {
+    left: 100%;
+}
+
+.painel form button:hover {
+    background: linear-gradient(135deg, var(--fundoBtnHover) 0%, var(--fundoBtn) 100%);
     border: solid var(--fundoBtn) 2px;
     transform: scale(1.005);
-    color: var(--contraste);
 }
 
 
-.painel form input::placeholder{
+.painel form input::placeholder {
     color: var(--texto);
     font-size: 16px;
     font-weight: 300;
@@ -83,7 +117,7 @@
 }
 
 
-.aviso{
+.aviso {
     display: flex;
 
     align-items: center;
@@ -91,6 +125,6 @@
     gap: 10px;
 }
 
-.aviso a{
+.aviso a {
     color: var(--contraste);
 }

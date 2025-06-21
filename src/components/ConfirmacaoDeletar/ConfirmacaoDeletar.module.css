@@ -1,0 +1,138 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background-color: var(--fundo1);
+    border: 3px solid var(--borda);
+    border-radius: 15px;
+    padding: 0;
+    width: 400px;
+    max-width: 90vw;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px 0 20px;
+    border-bottom: 1px solid var(--borda);
+    margin-bottom: 20px;
+}
+
+.modalHeader h2 {
+    color: var(--texto);
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btnFechar {
+    background: none;
+    border: none;
+    color: var(--texto);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.btnFechar:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btnFechar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.modalBody {
+    padding: 0 20px 20px 20px;
+}
+
+.modalBody p {
+    color: var(--texto);
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+}
+
+.modalBody strong {
+    color: var(--borda);
+}
+
+.aviso {
+    color: #ff6b6b !important;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.modalFooter {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 20px;
+    border-top: 1px solid var(--borda);
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 0 0 12px 12px;
+}
+
+.btnCancelar {
+    padding: 8px 16px;
+    background-color: transparent;
+    color: var(--texto);
+    border: 2px solid var(--borda);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btnCancelar:hover:not(:disabled) {
+    background-color: var(--borda);
+    color: var(--fundo1);
+}
+
+.btnCancelar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btnConfirmar {
+    padding: 8px 16px;
+    background-color: #ff6b6b;
+    color: white;
+    border: 2px solid #ff6b6b;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btnConfirmar:hover:not(:disabled) {
+    background-color: #ff5252;
+    border-color: #ff5252;
+}
+
+.btnConfirmar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

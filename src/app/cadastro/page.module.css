@@ -3,13 +3,26 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
     padding: 20px;
-    gap: 32px;
-    flex: 1;
-  
-  }
+    background: linear-gradient(135deg, var(--fundo1) 0%, var(--fundo2) 100%);
+    position: relative;
+    overflow: hidden;
+}
 
-.page h1{
+.page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    pointer-events: none;
+    z-index: 1;
+}
+
+.page h1 {
     font-size: 80px;
     font-weight: 1000;
     -webkit-text-stroke: 3px black;
@@ -20,83 +33,372 @@
     4px  4px 0 var(--contraste);
 }
 
+@keyframes glow {
+    from {
+        text-shadow:
+            0 0 20px rgba(255, 255, 255, 0.3),
+            0 0 40px rgba(255, 255, 255, 0.2),
+            0 0 60px rgba(255, 255, 255, 0.1);
+    }
+
+    to {
+        text-shadow:
+            0 0 30px rgba(255, 255, 255, 0.4),
+            0 0 50px rgba(255, 255, 255, 0.3),
+            0 0 70px rgba(255, 255, 255, 0.2);
+    }
+}
 
 .painel {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-width: 350px;
-    max-width: 500px;
-    height: 40dvh;
-    width: 50dvw;
-    background-color:black;
-    border-radius: 10px;
-    padding: 20px;
-    border: solid var(--borda) 2px;
-  }
-
-.painel form{
-    height: 90%;
-    display: flex;  
-    flex-direction: column;
-    align-items: center;
-    justify-content: initial;
-    gap: 10px;
-}
-
-.painel form input{
-    padding-left: 15px;
-    margin: 5px;
-    width: 90%;
-    height: 40px;
-    border-radius: 15px;
-    border: solid var(--borda) 2px;
-    color: var(--texto);
-    background-color: black;
+    width: 100%;
+    max-width: 450px;
+    min-height: 500px;
+    background-color: var(--fundo1);
     border: solid #ffffff 2px;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
 }
 
-.painel form button{
-    min-width: 145px;
-    cursor: pointer;
-    width: 40%;
-    height: 60px;
-    border-radius: 15px;
-    border: solid var(--borda) 2px;
-    color: var(--texto);
-    font-size: 25px;
-    font-weight: bold;
-    transition: 0.6s;
-    background-color: var(--fundoBtn);
-    border: solid #ffffff 2px;
+.painel:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.15);
 }
 
-.painel form button:hover{
-    background-color: var(--fundoBtnHover);
-    border: solid var(--fundoBtn) 2px;
-    transform: scale(1.005);
-    color: var(--contraste);
-}
-
-
-.painel form input::placeholder{
-    color: var(--texto);
-    font-size: 16px;
-    font-weight: 300;
-}
-
-
-.aviso{
+.painel form {
     display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
 
+.painel form input {
+    padding: 1rem 1.5rem;
+    width: 100%;
+    height: 50px;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--texto);
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.painel form input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.painel form input:focus {
+    outline: none;
+    border-color: var(--borda);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 0 0 3px rgba(255, 255, 255, 0.1),
+        0 0 20px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.painel form input:focus::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.painel form button {
+    height: 55px;
+    border-radius: 12px;
+    border: 2px solid var(--borda);
+    color: var(--texto);
+    font-size: 18px;
+    font-weight: 700;
+    font-family: inherit;
+    background: linear-gradient(135deg, var(--fundoBtn) 0%, var(--fundoBtnHover) 100%);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.painel form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.painel form button:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, var(--fundoBtnHover) 0%, var(--fundoBtn) 100%);
+}
+
+.painel form button:hover::before {
+    left: 100%;
+}
+
+.painel form button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.aviso {
+    display: flex;
     align-items: center;
     justify-content: end;
-    gap: 10px;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 10px;
+
 }
 
-.aviso a{
-    color: var(--contraste);
+.aviso p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
 }
-.painel form input:focus{
-    outline: none;
+
+.aviso a {
+    color: var(--contraste);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.aviso a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--contraste);
+    transition: width 0.3s ease;
+}
+
+.aviso a:hover {
+    color: var(--texto);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.aviso a:hover::after {
+    width: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .page {
+        padding: 15px;
+    }
+
+    .painel {
+        padding: 2rem;
+        min-height: 450px;
+    }
+
+    .page h1 {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .painel {
+        padding: 1.5rem;
+        min-height: 550px;
+    }
+
+    .painel form {
+        gap: 1rem;
+    }
+
+    .painel form input {
+        height: 45px;
+        padding: 0.8rem 1.2rem;
+        font-size: 14px;
+    }
+
+    .painel form button {
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .senhaContainer input {
+        padding-right: 35px;
+    }
+
+    .btnMostrarSenha {
+        right: 8px;
+        font-size: 12px;
+        width: 60px;
+        height: 20px;
+    }
+
+    .erro {
+        font-size: 11px;
+    }
+
+    .erroGeral {
+        font-size: 13px;
+        padding: 10px;
+    }
+}
+
+/* Animações de entrada */
+.painel {
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efeito de loading no botão */
+.painel form button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.painel form button:disabled::before {
+    display: none;
+}
+
+.inputGroup {
+    position: relative;
+    width: 100%;
+}
+
+.inputError {
+    border-color: #ff6b6b !important;
+    background: rgba(255, 107, 107, 0.1) !important;
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2) !important;
+}
+
+.erro {
+    color: #ff6b6b;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 5px;
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+.erroGeral {
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid #ff6b6b;
+    color: #ff6b6b;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 1rem;
+    animation: slideDown 0.3s ease;
+}
+
+.senhaContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.btnMostrarSenha {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 3px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    z-index: 10;
+    width: 60px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnMostrarSenha:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+.btnCarregando {
+    position: relative;
+    color: transparent !important;
+}
+
+.btnCarregando::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid var(--texto);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajuste para inputs de senha com botão */
+.senhaContainer input {
+    padding-right: 40px;
 }

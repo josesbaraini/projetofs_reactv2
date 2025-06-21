@@ -4,6 +4,7 @@ import StatusGate from "@/components/StatusGate";
 import { useEffect, useState } from "react";
 import { useUser } from "@/components/UserContext";
 import apiRoutes from "@/utils/apiRoutes";
+import { formatarDataApenas } from "@/utils/dateUtils";
 
 export default function Notificacoes() {
   return (
@@ -55,7 +56,7 @@ function NotificacoesConteudo() {
             <p>{notificacao.tipo}</p>
           </div>
           <div className={styles.data}>
-            <p>{(notificacao.hora.split('T')[0])}</p>
+            <p>{formatarDataApenas(notificacao.hora)}</p>
           </div>
           <div className={styles.pessoa}>
             <p>{notificacao.nome}</p>

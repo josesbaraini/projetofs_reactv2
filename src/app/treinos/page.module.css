@@ -6,9 +6,7 @@
     padding: 10px;
     gap: 10px;
     flex: 1;
-
 }
-
 
 .divPesquisas {
     display: flex;
@@ -16,11 +14,57 @@
     align-items: center;
     width: 100%;
     margin: 20px;
+    gap: 10px;
 }
 
 .divOrdenado {
-
     height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.divCheckbox {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.labelCheckbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--texto);
+    user-select: none;
+}
+
+.checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--borda);
+}
+
+.checkboxText {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.ordenacaoAtual {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    background-color: var(--fundo1);
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+}
+
+.ordenacaoLabel {
+    font-size: 12px;
+    color: var(--texto);
+    font-weight: 500;
 }
 
 .divOrdenado select {
@@ -36,13 +80,14 @@
     width: 70dvw;
     height: 40px;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .divOrdenado select option {
     background-color: var(--fundo2);
     color: var(--texto);
 }
-
 
 .divPesquisa input {
     width: 100%;
@@ -52,18 +97,73 @@
     border: solid var(--borda) 3px;
     border-radius: 10px;
     padding: 10px;
+    padding-right: 50px;
+    box-sizing: border-box;
 }
-
 
 .divPesquisa input:focus {
     border: solid var(--borda) 3px;
-
+    outline: none;
 }
 
-.divPesquisa Svg {
+.divPesquisa input::placeholder {
+    color: var(--texto);
+    opacity: 0.7;
+}
+
+.iconePesquisa {
     position: absolute;
     right: 10px;
-    top: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.iconePesquisa:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btnLimpar {
+    padding: 8px 16px;
+    background-color: var(--fundoBtn);
+    color: var(--texto);
+    border: 2px solid var(--borda);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btnLimpar:hover {
+    background-color: var(--borda);
+    color: var(--fundoBtn);
+}
+
+.carregando {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: var(--texto);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.semResultados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    color: var(--texto);
+    font-size: 16px;
+    opacity: 0.7;
 }
 
 .divInformacos {
@@ -74,7 +174,6 @@
     padding: 20px;
     border: #fff 2px solid;
     text-align: center;
-
 }
 
 .divNomeCoisas {
@@ -83,8 +182,6 @@
     display: flex;
     justify-content: space-around;
     font-size: 10px;
-
-
 }
 
 .divLinha {
@@ -117,7 +214,6 @@
 }
 
 .divAddTreinos {
-
     width: 80dvw;
     height: 50px;
 }
@@ -207,7 +303,6 @@
     flex-direction: column;
     gap: 5px;
 }
-
 
 .divPassosBotoes {
     margin-top: 10px;
@@ -359,4 +454,29 @@
 
 .teste input {
     width: 70%;
+}
+
+.btnDeletar {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    height: 30px;
+}
+
+.btnDeletar:hover:not(:disabled) {
+    background-color: rgba(255, 107, 107, 0.2);
+    transform: scale(1.1);
+}
+
+.btnDeletar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }

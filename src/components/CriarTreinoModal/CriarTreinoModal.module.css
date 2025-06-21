@@ -1,0 +1,242 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divCriaTreino {
+    padding: 20px;
+    position: relative;
+    width: 400px;
+    height: 450px;
+    background-color: var(--fundo1);
+    border: 3px solid white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px var(--borda);
+}
+
+.divCriaTreinoNome {
+    margin-bottom: 10px;
+    height: 10%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.divCriaTreinoNome p {
+    width: 20%;
+    font-size: 18px;
+}
+
+.divCriaTreinoNome input,
+.divCriaTreinoDescricao input,
+.divCriaTreino input,
+.teste input {
+    color: var(--texto);
+    background-color: rgba(172, 172, 172, 0.267);
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.divCriaTreinoNome input:focus,
+.divCriaTreinoDescricao input:focus,
+.divCriaTreino input:focus,
+.teste input:focus {
+    border: 2px solid var(--borda);
+    box-shadow: 0 0 4px var(--borda);
+}
+
+.divCriaTreinoDescricao input {
+    height: 70px;
+    resize: none;
+}
+
+.divCriaTreino input[type="text"] {
+    height: 40px;
+}
+
+.divCriaTreinoDescricao {
+    width: 40;
+    margin-bottom: 10px;
+    height: 25%;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.divPassosBotoes {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.divPassos {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.divBotoes {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.divColunaBtn1,
+.divColunaBtn2 {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.divColunaBtn1 button,
+.divColunaBtn2 button {
+    border-radius: 10px;
+    border: 2px solid var(--borda);
+    background-color: var(--fundoBtn);
+    color: var(--texto);
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 16px;
+    transition: 0.3s;
+    margin-top: 0;
+    cursor: pointer;
+}
+
+.divColunaBtn1 button:disabled,
+.divColunaBtn2 button:disabled {
+    opacity: 0.5;
+}
+
+.divCriaTreinoPasso {
+    padding: 20px;
+    position: absolute;
+    width: 400px;
+    height: 450px;
+    background-color: var(--fundo1);
+    border: 3px solid white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    left: calc(2vw + 420px);
+    top: 5vh;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px var(--borda);
+}
+
+.divCriaPassoNome {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.teste {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.teste p {
+    width: 30%;
+    font-size: 18px;
+}
+
+.teste input {
+    color: var(--texto);
+    background-color: rgba(172, 172, 172, 0.267);
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 8px;
+    width: 70%;
+    font-size: 16px;
+}
+
+.divColunaBtn3 {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.divColunaBtn3 button {
+    border-radius: 10px;
+    border: 2px solid var(--borda);
+    background-color: var(--fundoBtn);
+    color: var(--texto);
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 16px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.divColunaBtn3 button:disabled {
+    opacity: 0.5;
+}
+
+.btnFechar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--borda);
+    background: var(--fundoBtn);
+    color: var(--texto);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    z-index: 100;
+}
+
+.btnFechar:hover {
+    background: var(--borda);
+    color: var(--fundoBtn);
+    border: 2px solid var(--fundoBtn);
+}
+
+.divCriaTreinoNome input {
+    width: 75%;
+}
+
+.teste input {
+    width: 70%;
+}

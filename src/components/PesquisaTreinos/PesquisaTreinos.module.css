@@ -1,0 +1,109 @@
+.divPesquisas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px;
+    gap: 10px;
+}
+
+.divOrdenado {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.divCheckbox {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.labelCheckbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--texto);
+    user-select: none;
+}
+
+.checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--borda);
+}
+
+.checkboxText {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.divPesquisa {
+    margin-left: 10px;
+    width: 70dvw;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.divPesquisa input {
+    width: 100%;
+    color: var(--texto);
+    background-color: var(--diferenciadorE);
+    height: 100%;
+    border: solid var(--borda) 3px;
+    border-radius: 10px;
+    padding: 10px;
+    padding-right: 50px;
+    box-sizing: border-box;
+}
+
+.divPesquisa input:focus {
+    border: solid var(--borda) 3px;
+    outline: none;
+}
+
+.divPesquisa input::placeholder {
+    color: var(--texto);
+    opacity: 0.7;
+}
+
+.iconePesquisa {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.iconePesquisa:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btnLimpar {
+    padding: 8px 16px;
+    background-color: var(--fundoBtn);
+    color: var(--texto);
+    border: 2px solid var(--borda);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btnLimpar:hover {
+    background-color: var(--borda);
+    color: var(--fundoBtn);
+}
