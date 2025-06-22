@@ -3,7 +3,7 @@ import { useUser } from '@/components/UserContext';
 import apiRoutes from '@/utils/apiRoutes';
 
 export function useTreinos() {
-    const usuario = useUser();
+    const {usuario}= useUser();
     const [treinos, setTreinos] = useState([]);
     const [carregando, setCarregando] = useState(false);
     const [termoPesquisa, setTermoPesquisa] = useState("");

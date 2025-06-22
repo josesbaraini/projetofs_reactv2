@@ -14,7 +14,7 @@ export default function Notificacoes() {
   );
 }
 function NotificacoesConteudo() {
-  const usuario = useUser();
+  const {usuario} = useUser();
   const [dados, setdados] = useState([
     {
       "id": 0,
@@ -39,11 +39,31 @@ function NotificacoesConteudo() {
     setdados(data);
   };
 
+  const lerNotificacoes = async () =>{
+    if (!usuario?.id) return;
+    const notificacoesIDs = dados.map(item => item.id)
+    for (let index = 0; index < notificacoesIDs.length; index++) {
+      const element = notificacoesIDs[index];
+      await fetch(apiRoutes.patchNotificacoes(element), {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      
+    }
+  }
   useEffect(() => {
     if (usuario) {
       getNotificacoes();
     }
   }, [usuario]);
+
+  useEffect(() => {
+    if (dados && dados.length > 0 && usuario) {
+      lerNotificacoes();
+    }
+  }, [dados, usuario]);
 
   return (
     <div className={styles.page}>

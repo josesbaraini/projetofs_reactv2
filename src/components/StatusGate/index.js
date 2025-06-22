@@ -1,11 +1,12 @@
 'use client'
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
-import { UserContext } from '../UserContext';
+import { UserProvider } from '../UserContext';
+import { useUser } from '../UserContext';
 import apiRoutes from "@/utils/apiRoutes";
 
-export default function StatusGate({ children }) {
-  const [user, setUser] = useState(null);
+function GateConteudo({children}) {
+  const { usuario, setUsuario } = useUser();
   const [status, setStatus] = useState("loading");
   const router = useRouter()
 
@@ -18,7 +19,7 @@ export default function StatusGate({ children }) {
         const data = await res.json();
         if (res.ok && data.ok) {
           setStatus("ok");
-          setUser(data.usuario);
+          setUsuario(data.usuario);
         } else {
           router.push('/login');
         }
@@ -31,11 +32,18 @@ export default function StatusGate({ children }) {
     verificar();
   }, [router]);
 
-  if (status === "loading") return <p>Carregando...</p>;
+  return(
+    children
+  )
+}
 
+
+export default function StatusGate( {children}) {
+  
   return (
-    <UserContext.Provider value={user}>
-      {children}
-    </UserContext.Provider>
-  );
+    <UserProvider>
+      <GateConteudo>{children}</GateConteudo>
+    </UserProvider>
+  )
+
 }
