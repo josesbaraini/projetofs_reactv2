@@ -5,7 +5,7 @@ import { useUser } from '@/components/UserContext';
 import apiRoutes from '@/utils/apiRoutes';
 
 export default function CriarTreinoModal({ isOpen, onClose, onTreinoCriado }) {
-    const usuario = useUser();
+    const {usuario} = useUser();
     const [passos, setPassos] = useState([]);
     const [showCriaPasso, setShowCriaPasso] = useState(false);
 
