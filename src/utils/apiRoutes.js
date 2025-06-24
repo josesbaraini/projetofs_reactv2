@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = 'https://mygym.dev.vilhena.ifro.edu.br/api';
 
 const apiRoutes = {
     // Base URL
