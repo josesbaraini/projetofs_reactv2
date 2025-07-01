@@ -9,42 +9,27 @@ export default function PerfilConteudo(props){
             <>
             <div className={styles.opcao}>
                 <p>Nome de usuário:</p>
-                <input></input>
+                
                 <Svg tipo='chenge'></Svg>
             </div>
             
             <div className={styles.opcao}>
                 <p>Número de telefone: 
-                <input></input>(Verificado)</p>
+                (Verificado)</p>
                 <Svg tipo='chenge'></Svg>
             </div>
             <div className={styles.opcao}>
                 <p>Endereço de e-mail: 
-                <input></input> (Verificado)</p>
+                 (Verificado)</p>
                 <Svg tipo='chenge'></Svg>
             </div>
             <div className={styles.opcao}>
-                <p>Senha:<input></input> </p>
+                <p>Senha:</p>
                 <Svg tipo='chenge'></Svg>
             </div>
             <div className={styles.opcao}>
-                <p>Data de nascimento: <input></input> </p>
+                <p>Data de nascimento:  </p>
                 <Svg tipo='chenge'></Svg>
-            </div>
-            <div className={styles.opcao}>
-                <p>Idioma</p>
-                <select>
-                    <option value="1">Português</option>
-                    <option value="2">Inglês</option>
-                </select>
-            </div>
-            <div className={styles.opcao}>
-                <p>Tema</p>
-                <select>
-                    <option value="1">Automático</option>
-                    <option value="2">Claro</option>
-                    <option value="3">Escuro</option>
-                </select>
             </div>
             </>
         )

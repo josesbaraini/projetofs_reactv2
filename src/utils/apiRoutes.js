@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://mygymapi.dev.vilhena.ifro.edu.br/api';
+const API_BASE_URL = 'http://localhost:8000/api';
 
 const apiRoutes = {
     // Base URL
@@ -9,6 +9,8 @@ const apiRoutes = {
     cadastro: `${API_BASE_URL}/user/cadastro`,
     login: `${API_BASE_URL}/user/login`,
     autenticar: `${API_BASE_URL}/user/autenticar`,
+    getDadosBasicos:(userId)=> `${API_BASE_URL}/user/dadosbasicos/${userId}`,
+    getDadosAvancandos:(userId)=> `${API_BASE_URL}/user/dadosavancados/${userId}`,
 
     // Treinos
     getTreinos: (userId) => `${API_BASE_URL}/treinos/user/${userId}`,
