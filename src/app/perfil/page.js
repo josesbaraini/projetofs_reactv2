@@ -6,13 +6,13 @@ import PerfilConteudo from '@/components/PerfilConteudo';
 import StatusGate from "@/components/StatusGate";
 import { useUser } from '@/components/UserContext';
 import apiRoutes from "@/utils/apiRoutes";
+import { formatarData, formatarDataApenas } from '@/utils/dateUtils';
 
 
 function PerfilPagina() {
     const {usuario} = useUser();
   const [dadosBasicos, setDadosBasicos] = useState({});
   const [dadosAvancados, setDadosAvancados] = useState({});
-  console.log(usuario)
   const getUserData = async () => {
     
     if (!usuario?.id) return;
@@ -66,17 +66,17 @@ function PerfilPagina() {
             </div>
             <div className={styles.coluna2}>
                 <div className={styles.nome}>
-                    <h1>Nome Usuário</h1>
+                    <h1>{dadosBasicos.nome}</h1>
                 </div>
                 <div className={styles.linha}>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
 
                 </div>
                 <div className={styles.entrada}>
-                    <p> Data: --/--/----</p>
+                    <p>Entrou em {formatarDataApenas(dadosBasicos.created_at)}</p>
                 </div>
                 <div className={styles.conteudo}>
-                    <PerfilConteudo opcao={opcao} />
+                    <PerfilConteudo dados={dadosBasicos} opcao={opcao} />
                 </div>
 
             </div>

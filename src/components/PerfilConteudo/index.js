@@ -2,35 +2,35 @@
 import { useState } from 'react';
 import styles from './PerfilConteudo.module.css';
 import Svg from '@/components/svg';
+import { formatarDataApenas } from '@/utils/dateUtils';
 export default function PerfilConteudo(props){
   
     if(props.opcao === 1){
         return(
             <>
             <div className={styles.opcao}>
-                <p>Nome de usuário:</p>
+                <p>Nome de usuário: {props.dados.nome}</p>
                 
-                <Svg tipo='chenge'></Svg>
+                
             </div>
             
             <div className={styles.opcao}>
-                <p>Número de telefone: 
-                (Verificado)</p>
-                <Svg tipo='chenge'></Svg>
+                <p>Número de telefone: {props.dados.telefone}</p>
+               
             </div>
             <div className={styles.opcao}>
-                <p>Endereço de e-mail: 
-                 (Verificado)</p>
-                <Svg tipo='chenge'></Svg>
+                <p>Endereço de e-mail: {props.dados.email}</p>
+                
             </div>
             <div className={styles.opcao}>
-                <p>Senha:</p>
-                <Svg tipo='chenge'></Svg>
+                <p>Senha: *********</p>
+               
             </div>
             <div className={styles.opcao}>
-                <p>Data de nascimento:  </p>
-                <Svg tipo='chenge'></Svg>
+                <p>Data de nascimento: {formatarDataApenas(props.dados.data_nascimento)} </p>
+                
             </div>
+            <p>Editar Perfil</p>
             </>
         )
     }else if(props.opcao === 2){
