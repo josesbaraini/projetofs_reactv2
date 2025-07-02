@@ -1,8 +1,11 @@
-const API_BASE_URL = 'http://localhost:8000/api';
 
+import dotenv from "dotenv";
+
+dotenv.config({ path: '../.env' });
+
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 const apiRoutes = {
-    // Base URL
-    baseUrl: API_BASE_URL,
+
 
     // Autenticação
     desconectar: `${API_BASE_URL}/user/desconectar`,

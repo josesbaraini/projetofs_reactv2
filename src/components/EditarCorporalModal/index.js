@@ -42,15 +42,22 @@ export default function EditarCorporalModal({ isOpen, onClose, dadosCorporais })
             })
           });
           const dataAvancada = await responseAvancada.json();
+        if (!(dataAvancada.ok) || !(dataBasica.ok)) {
+            setMensagem("Dados Avançados ou Basicos invalidos")
+            
+        }else{
+            setMensagem("Informações corporais salvas com sucesso!")
+        }
+        
 
       };
     
     // Resetar estados quando o modal abrir
     useEffect(() => {
-        dadosCorporais.altura = dadosCorporais.altura/100
+        dadosCorporais.altura = dadosCorporais.altura
         if (isOpen && dadosCorporais) {
             setAltura(dadosCorporais.altura || "");
-            setPeso(dadosCorporais.peso/100 || "");
+            setPeso(dadosCorporais.peso || "");
             setImc(dadosCorporais.imc || "");
             setBiotipo(dadosCorporais.biotipo || "");
             setmetabasal(dadosCorporais.metabasal || "");
@@ -94,7 +101,9 @@ export default function EditarCorporalModal({ isOpen, onClose, dadosCorporais })
                                 type="number"
                                 value={altura}
                                 onChange={e => setAltura(Number(e.target.value))}
-                                placeholder="Ex: 175"
+                                placeholder="Ex: 1.75"
+                                min='0.5'
+                                max='2.5'
                
                             />
                         </div>
@@ -146,7 +155,7 @@ export default function EditarCorporalModal({ isOpen, onClose, dadosCorporais })
                                 value={metabasal}
                                 onChange={e => setmetabasal(e.target.value)}
                                 placeholder="Ex: 1800"
-                                min="800"
+                                min="1000"
                                 max="5000"
                             />
                         </div>
@@ -159,7 +168,7 @@ export default function EditarCorporalModal({ isOpen, onClose, dadosCorporais })
                     )}
 
                     {mensagem && (
-                        <div className={`${styles.mensagem} ${mensagem.includes('sucesso') ? styles.sucesso : styles.erro}`}>
+                        <div className={`${styles.mensagem} ${!(mensagem.includes('sucesso')) ? styles.sucesso : styles.erro}`}>
                             {mensagem}
                         </div>
                     )}
