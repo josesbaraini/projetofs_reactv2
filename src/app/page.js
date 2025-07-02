@@ -8,9 +8,9 @@ export default function Home() {
       <div className={styles.painel}>
         <h1 className={styles.par}>Olá! Bem-Vindo ao<br></br><span className={styles.bolder}>My Gym</span></h1>
         <p className={styles.pare}>Estamos muito felizes por você ter se juntado a nós!</p>
-        <p className={styles.pare}>Aqui você irá encontrar maneiras motivadoras de alcançar seus objetivos.</p>
-        <p className={styles.pare}>Estamos aqui pra te ajudar a cada passo da sua evolução.</p>
-        <p className={styles.pare}><strong>Vamos Começar!</strong></p>
+        <p className={styles.pare}>Vamos te ajudar a conquistar seus objetivos, passo a passo.</p>
+        <p className={styles.pare}>Seu progresso começa agora.</p>
+        <p className={styles.pare}><strong>Vamos juntos!</strong></p>
         <div className={styles.logoacademia}>
           <Image className={styles.img} src='/images/academia.png' alt="Academia" width={100} height={100} />
         </div>
