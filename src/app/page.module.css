@@ -6,6 +6,8 @@
   padding: 80px;
   gap: 64px;
   flex: 1;
+  background: linear-gradient(135deg, var(--fundo1) 0%, var(--fundo2) 100%);
+
 
 }
 
@@ -187,7 +189,7 @@ a.secondary {
   
 }
 .pare{
-  color: #fff;
+  color: #ffffff;
   padding:3px;
-  
+
 }
