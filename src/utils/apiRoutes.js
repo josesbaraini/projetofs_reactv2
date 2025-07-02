@@ -9,8 +9,11 @@ const apiRoutes = {
     cadastro: `${API_BASE_URL}/user/cadastro`,
     login: `${API_BASE_URL}/user/login`,
     autenticar: `${API_BASE_URL}/user/autenticar`,
+    //dados
     getDadosBasicos:(userId)=> `${API_BASE_URL}/user/dadosbasicos/${userId}`,
     getDadosAvancandos:(userId)=> `${API_BASE_URL}/user/dadosavancados/${userId}`,
+    atualizarDadosBasicos:(userId)=> `${API_BASE_URL}/user/dadosbasicos/${userId}`,
+    atualizarDadosAvancandos:(userId)=> `${API_BASE_URL}/user/dadosavancados/${userId}`,
 
     // Treinos
     getTreinos: (userId) => `${API_BASE_URL}/treinos/user/${userId}`,

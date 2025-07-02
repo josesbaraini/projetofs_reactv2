@@ -32,6 +32,7 @@ function PerfilPagina() {
         }
       });
       const dataAvancada = await responseAvancada.json();
+      dataBasica.altura = dataBasica.altura/100
     setDadosBasicos(dataBasica);
     setDadosAvancados(dataAvancada);
 
@@ -76,7 +77,7 @@ function PerfilPagina() {
                     <p>Entrou em {formatarDataApenas(dadosBasicos.created_at)}</p>
                 </div>
                 <div className={styles.conteudo}>
-                    <PerfilConteudo dados={dadosBasicos} opcao={opcao} />
+                    <PerfilConteudo dadosBasicos={dadosBasicos} dadosAvancados={dadosAvancados}   opcao={opcao} />
                 </div>
 
             </div>

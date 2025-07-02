@@ -1,49 +1,110 @@
-.opcao{
+.opcao {
     display: flex;
     margin: 10px;
     font-size: 20px;
 
-    
+
 }
-.opcao p{
+
+.opcao p {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 10px;
 
 }
-.opcao svg{
+
+.opcao svg {
     cursor: pointer;
     transition: all 0.6s ease;
 }
 
-.opcao svg:hover{
+.opcao svg:hover {
     transform: scale(1.1);
     transform: rotate(180deg);
 }
-.opcao h1{
+
+.opcao h1 {
     display: flex;
     align-items: center;
     justify-content: center;
 
 }
-.titulo{
+
+.titulo {
     font-size: 25px;
     font-weight: 600;
     text-align: center;
     margin-bottom: 10px;
 }
-.opcao select{
+
+.opcao select {
     background-color: var(--fundo2);
     border: 1px solid var(--borda);
     border-radius: 5px;
     color: var(--texto);
     cursor: pointer;
 }
-.opcao select option{
+
+.opcao select option {
     background-color: var(--fundo2);
     color: var(--texto);
 }
-.selec{
 
+.selec {}
+
+.btnEditarPerfil {
+    margin: 20px auto;
+    padding: 12px 24px;
+    background-color: var(--fundoBtn);
+    color: var(--texto);
+    border: 2px solid var(--borda);
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    text-align: center;
+    min-width: 150px;
+}
+
+.btnEditarPerfil:hover {
+    background-color: var(--borda);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btnEditarPerfil:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btnEditarCorporal {
+    margin: 20px auto;
+    padding: 12px 24px;
+    background-color: var(--fundoBtn);
+    color: var(--texto);
+    border: 2px solid var(--borda);
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    text-align: center;
+    min-width: 200px;
+}
+
+.btnEditarCorporal:hover {
+    background-color: var(--borda);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btnEditarCorporal:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
