@@ -168,7 +168,7 @@ export default function EditarCorporalModal({ isOpen, onClose, dadosCorporais })
                     )}
 
                     {mensagem && (
-                        <div className={`${styles.mensagem} ${!(mensagem.includes('sucesso')) ? styles.sucesso : styles.erro}`}>
+                        <div className={`${styles.mensagem} ${(mensagem.includes('sucesso')) ? styles.sucesso : styles.erro}`}>
                             {mensagem}
                         </div>
                     )}

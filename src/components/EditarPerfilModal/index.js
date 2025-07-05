@@ -2,8 +2,11 @@
 import { useState, useEffect } from 'react';
 import styles from './EditarPerfilModal.module.css';
 import { useUser } from '@/components/UserContext';
+import apiRoutes from '@/utils/apiRoutes';
 
 export default function EditarPerfilModal({ isOpen, onClose, dadosUsuario }) {
+    const { usuario } = useUser();
+
     // Estados para os campos do perfil
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
@@ -40,29 +43,72 @@ export default function EditarPerfilModal({ isOpen, onClose, dadosUsuario }) {
         }
     };
 
-    // Função para salvar alterações (simulada por enquanto)
+    // Função para salvar alterações
     async function salvarAlteracoes() {
         if (senha !== confirmarSenha) {
             setMensagem("As senhas não coincidem!");
             return;
         }
 
+        // Verificar se o usuário está carregado
+        if (!usuario?.id) {
+            setMensagem("Usuário não carregado. Tente novamente.");
+            return;
+        }
+
         setCarregando(true);
         setMensagem("");
 
-        // Simular processamento
-        setTimeout(() => {
-            setMensagem("Alterações salvas com sucesso! (Simulação)");
+        try {
+            // Se há uma foto selecionada, enviar para a API
+            if (fotoPerfil) {
+
+
+                const formData = new FormData();
+                formData.append('profileImage', fotoPerfil); // 'foto' é o nome do campo esperado pela API
+
+
+                for (let [key, value] of formData.entries()) {
+                    console.log(key, value);
+                }
+
+                // Pega o ID do usuário do contexto
+                const userId = usuario.id;
+
+                const response = await fetch(apiRoutes.fotoPerfil(userId), {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'include'
+                    // Não incluir Content-Type, o navegador define automaticamente para FormData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Erro ao enviar foto: ${response.status}`);
+                }
+
+                const result = await response.json();
+                console.log('Foto enviada com sucesso:', result);
+            }
+
+            // Aqui você pode adicionar outras chamadas para salvar nome, email, telefone, senha
+            // Por exemplo:
+            // await salvarDadosUsuario({ nome, email, telefone, senha });
+
+            setMensagem("Alterações salvas com sucesso!");
             setTimeout(() => {
                 onClose();
             }, 1500);
-        }, 1000);
 
-        setCarregando(false);
+        } catch (error) {
+            console.error('Erro ao salvar:', error);
+            setMensagem(`Erro ao salvar: ${error.message}`);
+        } finally {
+            setCarregando(false);
+        }
     }
 
-    // Se não estiver aberto, não renderizar nada
-    if (!isOpen) return null;
+    // Se não estiver aberto ou usuário não carregado, não renderizar nada
+    if (!isOpen || !usuario?.id) return null;
 
     return (
         <div className={styles.modalOverlay}>

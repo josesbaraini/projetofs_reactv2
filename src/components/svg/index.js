@@ -2,11 +2,14 @@
 import styles from './Svg.modules.css'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
-
-
+import { useUser } from '@/components/UserContext';
+import apiRoutes from '@/utils/apiRoutes';
 
 export default function Svg(props) {
     const [iconColor, setIconColor] = useState("");
+    const [fotoPerfil, setFotoPerfil] = useState(null);
+    const [erroFoto, setErroFoto] = useState(false);
+    const { usuario } = useUser();
 
     useEffect(() => {
         const color = getComputedStyle(document.documentElement)
@@ -15,8 +18,75 @@ export default function Svg(props) {
         setIconColor(color);
     }, []);
 
+    // Buscar foto do perfil quando o componente for do tipo 'user'
+    useEffect(() => {
+        if (props.tipo === 'user' && usuario?.id) {
+            buscarFotoPerfil();
+        }
+    }, [props.tipo, usuario?.id]);
+
+    const buscarFotoPerfil = async () => {
+        try {
+            console.log('Buscando foto para usuário ID:', usuario.id);
+            const response = await fetch(apiRoutes.fotoPerfil(usuario.id), {
+                method: 'GET',
+                credentials: 'include'
+            });
+
+            console.log('Status da resposta:', response.status);
+            console.log('Headers da resposta:', response.headers);
+
+            if (response.ok) {
+                const blob = await response.blob();
+                console.log('Blob recebido:', blob);
+                console.log('Tipo do blob:', blob.type);
+                console.log('Tamanho do blob:', blob.size);
+
+                const imageUrl = URL.createObjectURL(blob);
+                console.log('URL criada:', imageUrl);
+
+                setFotoPerfil(imageUrl);
+                setErroFoto(false);
+            } else {
+                console.log('Erro na resposta:', response.status, response.statusText);
+                setErroFoto(true);
+            }
+        } catch (error) {
+            console.error('Erro ao buscar foto do perfil:', error);
+            setErroFoto(true);
+        }
+    };
+
+    // Limpar URL do blob quando o componente for desmontado
+    useEffect(() => {
+        return () => {
+            if (fotoPerfil) {
+                URL.revokeObjectURL(fotoPerfil);
+            }
+        };
+    }, [fotoPerfil]);
+
     switch (props.tipo) {
         case 'user':
+            // Se tem foto do perfil e não houve erro, mostra a foto
+            if (fotoPerfil && !erroFoto) {
+                return (
+                    <img
+                        src={fotoPerfil}
+                        alt="Foto do perfil"
+                        width={props.largura}
+                        height={props.altura}
+                        style={{
+                            borderRadius: '50%',
+                            objectFit: 'cover',
+                            cursor: props.funcao ? 'pointer' : 'default'
+                        }}
+                        onClick={props.funcao}
+                        className={styles.icone}
+                    />
+                );
+            }
+            // Se não tem foto ou houve erro, mostra o SVG padrão
             return (<svg width={props.largura} onClick={props.funcao} className={styles.icone} height={props.altura} viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke='#000000' strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>)
         case 'userU':
             return (<svg width="25px" height="25px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke={iconColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>)

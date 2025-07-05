@@ -17,6 +17,7 @@ const apiRoutes = {
     getDadosAvancandos:(userId)=> `${API_BASE_URL}/user/dadosavancados/${userId}`,
     atualizarDadosBasicos:(userId)=> `${API_BASE_URL}/user/dadosbasicos/${userId}`,
     atualizarDadosAvancandos:(userId)=> `${API_BASE_URL}/user/dadosavancados/${userId}`,
+    fotoPerfil:(userId)=> `${API_BASE_URL}/user/fotoPerfil/${userId}`,
 
     // Treinos
     getTreinos: (userId) => `${API_BASE_URL}/treinos/user/${userId}`,
