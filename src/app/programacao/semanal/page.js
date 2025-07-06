@@ -7,7 +7,7 @@ import EventoTooltip from '@/components/EventoTooltip';
 
 
 function ProgramacaoSemanalConteudo() {
-    const { eventos, carregando: carregandoEventos, getEventosSemanaAtual } = useEventos();
+    const { eventos, carregando: carregandoEventos, getEventosSemanaAtual, recarregarEventos } = useEventos();
     const { treinos, carregando: carregandoTreinos } = useTreinos();
 
     // Obter eventos da semana atual
@@ -31,6 +31,11 @@ function ProgramacaoSemanalConteudo() {
         });
     };
 
+    // Função para recarregar eventos após edição
+    const handleEventoUpdated = () => {
+        recarregarEventos();
+    };
+
     return (
         <div className={styles.page}>
             <div className={styles.cima}>
@@ -48,7 +53,7 @@ function ProgramacaoSemanalConteudo() {
                     <div className={styles.evento}>
                         <p>Evento:</p>
                         <p className={styles.resposta}>
-                            <EventoTooltip eventos={getEventosPorDia('Segunda')} />
+                            <EventoTooltip eventos={getEventosPorDia('Segunda')} onEventoUpdated={handleEventoUpdated} />
                         </p>
                     </div>
                 </div>
@@ -61,7 +66,7 @@ function ProgramacaoSemanalConteudo() {
                     <div className={styles.evento}>
                         <p>Evento:</p>
                         <p className={styles.resposta}>
-                            <EventoTooltip eventos={getEventosPorDia('Terça')} />
+                            <EventoTooltip eventos={getEventosPorDia('Terça')} onEventoUpdated={handleEventoUpdated} />
                         </p>
                     </div>
                 </div>
@@ -74,7 +79,7 @@ function ProgramacaoSemanalConteudo() {
                     <div className={styles.evento}>
                         <p>Evento:</p>
                         <p className={styles.resposta}>
-                            <EventoTooltip eventos={getEventosPorDia('Quarta')} />
+                            <EventoTooltip eventos={getEventosPorDia('Quarta')} onEventoUpdated={handleEventoUpdated} />
                         </p>
                     </div>
                 </div>
@@ -86,9 +91,9 @@ function ProgramacaoSemanalConteudo() {
                     </div>
                     <div className={styles.evento}>
                         <p>Evento:</p>
-                        <p className={styles.resposta}>
-                            <EventoTooltip eventos={getEventosPorDia('Sexta')} />
-                        </p>
+                        <div className={styles.resposta}>
+                            <EventoTooltip eventos={getEventosPorDia('Sexta')} onEventoUpdated={handleEventoUpdated} />
+                        </div>
                     </div>
                 </div>
                 <div className={styles.dia}>
@@ -100,7 +105,7 @@ function ProgramacaoSemanalConteudo() {
                     <div className={styles.evento}>
                         <p>Evento:</p>
                         <p className={styles.resposta}>
-                            <EventoTooltip eventos={getEventosPorDia('Sábado')} />
+                            <EventoTooltip eventos={getEventosPorDia('Sábado')} onEventoUpdated={handleEventoUpdated} />
                         </p>
                     </div>
                 </div>
@@ -112,9 +117,9 @@ function ProgramacaoSemanalConteudo() {
                     </div>
                     <div className={styles.evento}>
                         <p>Evento:</p>
-                        <p className={styles.resposta}>
-                            <EventoTooltip eventos={getEventosPorDia('Domingo')} />
-                        </p>
+                        <div className={styles.resposta}>
+                            <EventoTooltip eventos={getEventosPorDia('Domingo')} onEventoUpdated={handleEventoUpdated} />
+                        </div>
                     </div>
                 </div>
             </div>

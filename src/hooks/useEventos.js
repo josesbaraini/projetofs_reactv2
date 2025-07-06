@@ -61,7 +61,7 @@ export function useEventos() {
 
         const hoje = new Date();
         const inicioSemana = new Date(hoje);
-        inicioSemana.setDate(hoje.getDate() - hoje.getDay() ); // Segunda-feira
+        inicioSemana.setDate(hoje.getDate() - hoje.getDay()); // Segunda-feira
         inicioSemana.setHours(0, 0, 0, 0);
 
         const fimSemana = new Date(inicioSemana);
@@ -89,6 +89,7 @@ export function useEventos() {
 
         // Funções
         getEventos,
+        recarregarEventos: getEventos,
         getEventosPorData,
         getEventosSemanaAtual
     };

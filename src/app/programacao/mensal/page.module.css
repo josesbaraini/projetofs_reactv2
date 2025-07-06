@@ -1,4 +1,4 @@
-.page{
+.page {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -9,7 +9,7 @@
 
 }
 
-.divInfos{
+.divInfos {
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -18,27 +18,139 @@
     height: 80dvh;
 }
 
-.divCalendario{
+.divCalendario {
     width: 65dvw;
     height: 45dvh;
     border: solid #fff 2px;
     background-color: rgb(150, 150, 150);
 }
 
-.divEventosDoMes{
+.divEventosDoMes {
     height: 45%;
     text-align: center;
     width: 100%;
-    background-color:  var(--fundo1);
+    background-color: var(--fundo1);
     border: 2px var(--borda) solid;
     border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-.divEventoSelecionado{
+.divEventoSelecionado {
     text-align: center;
     background-color: var(--fundo1);
     border: 2px var(--borda) solid;
     border-radius: 10px;
     width: 100%;
     height: 35%;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.seletorMes {
+    margin: 10px 0;
+}
+
+.seletorMes select {
+    background-color: var(--fundo2);
+    color: var(--texto);
+    border: 2px solid var(--borda);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+.seletorMes select:focus {
+    border-color: var(--borda);
+    box-shadow: 0 0 4px var(--borda);
+}
+
+.listaEventos {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--borda) var(--fundo1);
+}
+
+.listaEventos::-webkit-scrollbar {
+    width: 6px;
+}
+
+.listaEventos::-webkit-scrollbar-track {
+    background: var(--fundo1);
+}
+
+.listaEventos::-webkit-scrollbar-thumb {
+    background: var(--borda);
+    border-radius: 3px;
+}
+
+.listaEventos::-webkit-scrollbar-thumb:hover {
+    background: var(--borda);
+}
+
+.eventoItem {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    margin: 5px 0;
+    background-color: var(--fundo2);
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.eventoItem:hover {
+    background-color: var(--borda);
+    color: white;
+    transform: translateX(5px);
+}
+
+.eventoItem.eventoSelecionado {
+    background-color: var(--borda);
+    color: white;
+    border-color: var(--borda);
+}
+
+.eventoData {
+    font-weight: bold;
+    margin-right: 8px;
+    min-width: 80px;
+}
+
+.eventoNome {
+    flex: 1;
+}
+
+.eventoDescricao {
+    margin-top: 10px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.erro {
+    color: #ff4444;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+.dicaEdicao {
+    color: var(--borda);
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+}
+
+.divEventoSelecionado:hover {
+    border-color: var(--borda);
+    transition: border-color 0.2s ease;
 }

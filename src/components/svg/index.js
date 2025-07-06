@@ -27,28 +27,24 @@ export default function Svg(props) {
 
     const buscarFotoPerfil = async () => {
         try {
-            console.log('Buscando foto para usuário ID:', usuario.id);
             const response = await fetch(apiRoutes.fotoPerfil(usuario.id), {
                 method: 'GET',
                 credentials: 'include'
             });
 
-            console.log('Status da resposta:', response.status);
-            console.log('Headers da resposta:', response.headers);
+
 
             if (response.ok) {
                 const blob = await response.blob();
-                console.log('Blob recebido:', blob);
-                console.log('Tipo do blob:', blob.type);
-                console.log('Tamanho do blob:', blob.size);
+
 
                 const imageUrl = URL.createObjectURL(blob);
-                console.log('URL criada:', imageUrl);
+
 
                 setFotoPerfil(imageUrl);
                 setErroFoto(false);
             } else {
-                console.log('Erro na resposta:', response.status, response.statusText);
+    
                 setErroFoto(true);
             }
         } catch (error) {

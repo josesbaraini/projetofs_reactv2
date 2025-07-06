@@ -1,4 +1,4 @@
-.page{
+.page {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -9,27 +9,35 @@
 
 
 }
-.divCalendarios{
+
+.divCalendarios {
     align-items: center;
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
 }
-.divCalendario{
+
+.divCalendario {
     width: 350px;
     height: 290px;
+    background-color: var(--fundo1);
+    border: 2px solid var(--borda);
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 
-.divCoisas{
+.divCoisas {
     margin: 20px;
     width: 350px;
     display: flex;
     flex-direction: column;
     height: 550px;
 }
-.divEventos{
+
+.divEventos {
     margin-top: 10px;
     flex-direction: column;
     padding: 20px;
@@ -39,4 +47,67 @@
     border-radius: 10px;
     width: 350px;
     height: 200px;
+    overflow-y: auto;
+}
+
+.divEventos h3 {
+    text-align: center;
+    color: var(--texto);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.divEventos p {
+    color: var(--texto);
+    font-size: 14px;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: var(--fundo2);
+}
+
+.eventoItem {
+    display: flex;
+    align-items: center;
+    padding: 6px 8px;
+    margin: 3px 0;
+    background-color: var(--fundo2);
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.eventoData {
+    font-weight: bold;
+    margin-right: 8px;
+    min-width: 60px;
+    color: var(--borda);
+}
+
+.eventoNome {
+    flex: 1;
+    color: var(--texto);
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.semEventos {
+    color: var(--texto);
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.carregando {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: var(--texto);
+    font-size: 18px;
+    font-weight: bold;
 }

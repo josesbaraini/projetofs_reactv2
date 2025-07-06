@@ -1,0 +1,244 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.modalContent {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.divEditarEvento {
+    padding: 20px;
+    position: relative;
+    width: 90%;
+    max-width: 450px;
+    min-height: auto;
+    max-height: 90vh;
+    background-color: var(--fundo1);
+    border: 3px solid white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px var(--borda);
+    overflow-y: auto;
+    margin: 20px;
+}
+
+.titulo {
+    text-align: center;
+    color: var(--texto);
+    font-size: clamp(20px, 4vw, 24px);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo label {
+    color: var(--texto);
+    font-size: clamp(14px, 3vw, 16px);
+    font-weight: 500;
+}
+
+.campo input,
+.campo textarea {
+    color: var(--texto);
+    background-color: rgba(172, 172, 172, 0.267);
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: clamp(8px, 2vw, 12px);
+    font-size: clamp(14px, 3vw, 16px);
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    border: 2px solid var(--borda);
+    box-shadow: 0 0 4px var(--borda);
+}
+
+.campo textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.inputDisabled {
+    background-color: rgba(172, 172, 172, 0.1) !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    cursor: not-allowed;
+}
+
+.carregando {
+    text-align: center;
+    color: var(--borda);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.mensagem {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.sucesso {
+    background-color: rgba(0, 255, 0, 0.1);
+    color: #00aa00;
+    border: 1px solid #00aa00;
+}
+
+.erro {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: #ff0000;
+    border: 1px solid #ff0000;
+}
+
+.botoes {
+    display: flex;
+    gap: clamp(10px, 2vw, 15px);
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btnSalvar,
+.btnCancelar {
+    flex: 1;
+    min-width: 120px;
+    border-radius: 10px;
+    border: 2px solid var(--borda);
+    background-color: var(--fundoBtn);
+    color: var(--texto);
+    font-size: clamp(14px, 3vw, 16px);
+    font-weight: bold;
+    padding: clamp(8px, 2vw, 12px) clamp(15px, 3vw, 20px);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btnSalvar:hover {
+    background-color: var(--borda);
+    color: white;
+}
+
+.btnCancelar:hover {
+    background-color: #ff4444;
+    color: white;
+    border-color: #ff4444;
+}
+
+.btnSalvar:disabled,
+.btnCancelar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btnFechar {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--borda);
+    background-color: var(--fundoBtn);
+    color: var(--texto);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnFechar:hover {
+    background-color: #ff4444;
+    color: white;
+    border-color: #ff4444;
+}
+
+@media (max-width: 768px) {
+    .divEditarEvento {
+        width: 95%;
+        max-width: none;
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .modalOverlay {
+        padding: 5px;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+
+    .btnSalvar,
+    .btnCancelar {
+        min-width: auto;
+    }
+
+    .btnFechar {
+        top: 10px;
+        right: 10px;
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .divEditarEvento {
+        width: 100%;
+        margin: 5px;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .titulo {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .campo {
+        gap: 5px;
+    }
+
+    .campo label {
+        font-size: 14px;
+    }
+
+    .campo input,
+    .campo textarea {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

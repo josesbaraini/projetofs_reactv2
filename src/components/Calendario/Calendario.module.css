@@ -1,28 +1,33 @@
-.diasDaSemana{
+.diasDaSemana {
     display: flex;
 }
-.diasDaSemana div{
+
+.diasDaSemana div {
     width: 14.28%;
 }
-.cabeca{
+
+.cabeca {
     display: flex;
     justify-content: space-around;
 }
 
-.cabeca h1{
+.cabeca h1 {
     cursor: pointer;
 }
-.calendario{
+
+.calendario {
     width: 100%;
     height: 75%;
     display: flex;
     flex-direction: column;
 }
-.diaDoMes{
+
+.diaDoMes {
     display: flex;
     flex-wrap: wrap;
 }
-.diaE{
+
+.diaE {
     background-color: var(--fundo1);
     width: 80%;
     height: 80%;
@@ -31,25 +36,74 @@
     justify-content: center;
     display: flex;
 }
-.diaEvento{
+
+.diaEvento {
     background-color: var(--contraste);
     color: var(--fundo1);
     cursor: pointer;
+    transition: all 0.2s ease;
 }
-.diaFinalSemana{
+
+.diaEvento:hover {
+    background-color: var(--borda);
+    transform: scale(1.05);
+}
+
+.diaFinalSemana {
     background-color: var(--fundoBtn);
 }
-.dia{
+
+.dia {
     display: flex;
     width: 14.28%;
     align-items: center;
     justify-content: center;
     height: 40px;
 }
-.diaDaSemana{
+
+.diaDaSemana {
     text-align: center;
 }
-.diaAtual{
+
+.diaAtual {
     border: solid var(--borda) 2px
 }
 
+/* Estilos para calendários pequenos */
+.calendarioPequeno {
+    height: 100%;
+    font-size: 0.8em;
+}
+
+.tituloPequeno {
+    font-size: 14px !important;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.diaDaSemanaPequeno {
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px;
+}
+
+.diaPequeno {
+    height: 25px;
+}
+
+.diaPequeno .diaE {
+    width: 90%;
+    height: 90%;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.diaPequeno .diaEvento {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.diaPequeno .diaFinalSemana {
+    font-size: 11px;
+}

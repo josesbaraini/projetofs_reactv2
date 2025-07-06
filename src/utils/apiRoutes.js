@@ -30,6 +30,8 @@ const apiRoutes = {
 
     // Eventos
     getEventos: (userId) => `${API_BASE_URL}/eventos/pegarlista/${userId}`,
+    getEventosPorMes: (userId, mes) => `${API_BASE_URL}/eventos/pelomes/${userId}`,
+    atualizarEvento: (eventoId) => `${API_BASE_URL}/eventos/${eventoId}`,
 
     // Adicione outras rotas aqui conforme precisar
 };

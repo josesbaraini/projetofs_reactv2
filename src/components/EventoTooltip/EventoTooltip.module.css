@@ -7,10 +7,12 @@
     cursor: pointer;
     position: relative;
     display: inline-block;
+    transition: color 0.2s;
 }
 
 .eventoNome:hover {
     text-decoration: underline;
+    color: var(--borda);
 }
 
 .tooltip {
@@ -19,7 +21,7 @@
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--fundo2);
-    color: var(--texto);
+    color: black;
     padding: 8px 12px;
     border-radius: 6px;
     font-size: 14px;
