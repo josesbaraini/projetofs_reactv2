@@ -5,7 +5,7 @@ import { UserProvider } from '../UserContext';
 import { useUser } from '../UserContext';
 import apiRoutes from "@/utils/apiRoutes";
 
-function GateConteudo({children}) {
+function GateConteudo({ children, redirect = true }) {
   const { usuario, setUsuario } = useUser();
   const [status, setStatus] = useState("loading");
   const router = useRouter()
@@ -21,28 +21,41 @@ function GateConteudo({children}) {
           setStatus("ok");
           setUsuario(data.usuario);
         } else {
-          router.push('/login');
+          if (redirect) {
+            router.push('/login');
+          } else {
+            setStatus("not-authenticated");
+          }
         }
       } catch (error) {
         // Lidar com erros de rede, etc.
-        router.push('/login');
+        if (redirect) {
+          router.push('/login');
+        } else {
+          setStatus("not-authenticated");
+        }
       }
     };
 
     verificar();
-  }, [router]);
+  }, [router, redirect]);
 
-  return(
+  // Se não deve redirecionar e não está autenticado, não renderiza nada
+  if (!redirect && status === "not-authenticated") {
+    return null;
+  }
+
+  return (
     children
   )
 }
 
 
-export default function StatusGate( {children}) {
-  
+export default function StatusGate({ children, redirect = true }) {
+
   return (
     <UserProvider>
-      <GateConteudo>{children}</GateConteudo>
+      <GateConteudo redirect={redirect}>{children}</GateConteudo>
     </UserProvider>
   )
 

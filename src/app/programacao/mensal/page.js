@@ -7,6 +7,7 @@ import StatusGate from "@/components/StatusGate";
 import { useEventosPorMes } from '@/hooks/useEventosPorMes';
 import { formatarDataApenas } from '@/utils/dateUtils';
 import EditarEventoModal from '@/components/EditarEventoModal';
+import CriarEventoModal from '@/components/CriarEventoModal';
 
 function ProgramacaoMensalConteudo() {
   const {
@@ -20,9 +21,10 @@ function ProgramacaoMensalConteudo() {
     getNomeMes,
     recarregarEventos
   } = useEventosPorMes();
-
+  const [mesNumero, setMesNumero] = useState(dayjs())
   const [modalAberto, setModalAberto] = useState(false);
   const [eventoParaEditar, setEventoParaEditar] = useState(null);
+  const [modalCriarAberto, setModalCriarAberto] = useState(false);
 
   const handleEventoClick = (evento) => {
     selecionarEvento(evento);
@@ -34,6 +36,7 @@ function ProgramacaoMensalConteudo() {
   };
 
   const handleMesChange = (novoMes) => {
+    setMesNumero(dayjs(mesNumero.format(`YYYY-${novoMes}-DD`)))
     mudarMes(novoMes);
   };
 
@@ -42,19 +45,38 @@ function ProgramacaoMensalConteudo() {
     setEventoParaEditar(null);
   };
 
+  const handleCloseModalCriar = () => {
+    setModalCriarAberto(false);
+  };
+
   const handleEventoUpdated = () => {
+    recarregarEventos();
+  };
+
+  const handleEventoCriado = () => {
     recarregarEventos();
   };
 
   return (
     <div className={styles.page}>
+      <div>
       <div className={styles.divCalendario}>
         <Calendario
-          data={dayjs().format('YYYY-MM-DD')}
+          data={mesNumero}
           eventos={eventos}
-          onEventoClick={handleEventoClick}
-          onEventoDoubleClick={handleEventoDoubleClick}>
+          valores={{
+            onClick: handleEventoClick,
+            onDoubleClick: handleEventoDoubleClick
+          }}>
         </Calendario>
+
+      </div>
+      <button
+          className={styles.btnCriarEvento}
+          onClick={() => setModalCriarAberto(true)}
+        >
+          + Criar Novo Evento
+        </button>
       </div>
       <div className={styles.divInfos}>
         <div className={styles.divEventosDoMes}>
@@ -137,6 +159,12 @@ function ProgramacaoMensalConteudo() {
         onClose={handleCloseModal}
         evento={eventoParaEditar}
         onEventoUpdated={handleEventoUpdated}
+      />
+
+      <CriarEventoModal
+        isOpen={modalCriarAberto}
+        onClose={handleCloseModalCriar}
+        onEventoCriado={handleEventoCriado}
       />
     </div>
   );

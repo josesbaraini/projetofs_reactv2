@@ -55,6 +55,7 @@ function ProgramacaoAnualConteudo() {
               <Calendario
                 data={dayjs().format(`YYYY-${String(mes).padStart(2, '0')}`)}
                 eventos={eventosPorMes[mes] || []}
+                valores={{}}
                 isSmall={true}>
               </Calendario>
             </div>

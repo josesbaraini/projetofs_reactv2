@@ -2,12 +2,11 @@
 import styles from './Header.module.css';
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { createContext, useContext } from "react";
+
 import { useRouter } from 'next/navigation';
-import StatusGate from "@/components/StatusGate";
-import Svg from '../svg'
 import { useUser } from '../UserContext';
+import Svg from '../svg'
+import StatusGate from '../StatusGate';
 import apiRoutes from "@/utils/apiRoutes"
 
 
