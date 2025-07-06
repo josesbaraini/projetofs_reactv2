@@ -1,0 +1,45 @@
+.eventoContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.eventoNome {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.eventoNome:hover {
+    text-decoration: underline;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--fundo2);
+    color: var(--texto);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 1000;
+    border: 1px solid var(--borda);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    max-width: 200px;
+    word-wrap: break-word;
+    white-space: normal;
+    margin-bottom: 5px;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--fundo2) transparent transparent transparent;
+}

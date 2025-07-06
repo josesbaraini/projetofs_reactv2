@@ -13,7 +13,7 @@ export default function Principal() {
                             <th>Séries</th>
                             <th>Peso</th>
                             <th>Tempo</th>
-                            <th>Estado</th>
+                            <th>Excluir</th>
                         </tr>
                     </thead>
                     <tbody>

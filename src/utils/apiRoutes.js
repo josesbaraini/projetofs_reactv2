@@ -13,11 +13,11 @@ const apiRoutes = {
     login: `${API_BASE_URL}/user/login`,
     autenticar: `${API_BASE_URL}/user/autenticar`,
     //dados
-    getDadosBasicos:(userId)=> `${API_BASE_URL}/user/dadosbasicos/${userId}`,
-    getDadosAvancandos:(userId)=> `${API_BASE_URL}/user/dadosavancados/${userId}`,
-    atualizarDadosBasicos:(userId)=> `${API_BASE_URL}/user/dadosbasicos/${userId}`,
-    atualizarDadosAvancandos:(userId)=> `${API_BASE_URL}/user/dadosavancados/${userId}`,
-    fotoPerfil:(userId)=> `${API_BASE_URL}/user/fotoPerfil/${userId}`,
+    getDadosBasicos: (userId) => `${API_BASE_URL}/user/dadosbasicos/${userId}`,
+    getDadosAvancandos: (userId) => `${API_BASE_URL}/user/dadosavancados/${userId}`,
+    atualizarDadosBasicos: (userId) => `${API_BASE_URL}/user/dadosbasicos/${userId}`,
+    atualizarDadosAvancandos: (userId) => `${API_BASE_URL}/user/dadosavancados/${userId}`,
+    fotoPerfil: (userId) => `${API_BASE_URL}/user/fotoPerfil/${userId}`,
 
     // Treinos
     getTreinos: (userId) => `${API_BASE_URL}/treinos/user/${userId}`,
@@ -27,6 +27,9 @@ const apiRoutes = {
     // Notificações
     getNotificacoes: (userId) => `${API_BASE_URL}/notificacoes/${userId}`,
     patchNotificacoes: (userId) => `${API_BASE_URL}/notificacoes/${userId}`,
+
+    // Eventos
+    getEventos: (userId) => `${API_BASE_URL}/eventos/pegarlista/${userId}`,
 
     // Adicione outras rotas aqui conforme precisar
 };
