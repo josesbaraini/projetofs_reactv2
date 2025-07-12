@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 
 
 export default function Calendario(props) {
-  const [currentDate, setCurrentDate] = useState(props.data);
+  const [currentDate, setCurrentDate] = useState(dayjs(props.data));
   const [mesAtual, setMesAtual] = useState(currentDate.format("MMM YYYY"))
   const eventos = props.eventos || [];
   const valores = props.valores || {};
@@ -13,7 +13,6 @@ export default function Calendario(props) {
 
   // Função para alterar o mês
   const changeMonth = (amount) => {
-
     setCurrentDate(currentDate.add(amount, "month"));
   };
 
@@ -61,7 +60,7 @@ export default function Calendario(props) {
     return days;
   };
   useEffect(() => {
-    setCurrentDate(props.data);
+    setCurrentDate(dayjs(props.data));
   }, [props.data]);
 
 

@@ -2,12 +2,15 @@
   "name": "projetofs_reactv2",
   "version": "0.1.0",
   "private": true,
+  
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
+  "type":"module",
+  
   "dependencies": {
     "dayjs": "^1.11.13",
     "dotenv": "^17.0.1",

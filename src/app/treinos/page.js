@@ -1,11 +1,13 @@
 'use client'
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './page.module.css'
 import StatusGate from "@/components/StatusGate";
 import CriarTreinoModal from '@/components/CriarTreinoModal';
 import PesquisaTreinos from '@/components/PesquisaTreinos';
 import ConfirmacaoDeletar from '@/components/ConfirmacaoDeletar';
 import { useTreinos } from '@/hooks/useTreinos';
+import { useTreinoSelecionado } from '@/hooks/useTreinoSelecionado';
 import { formatarData } from '@/utils/dateUtils';
 
 export default function Treinos() {
@@ -17,6 +19,8 @@ export default function Treinos() {
 }
 
 function TreinosConteudo() {
+    const router = useRouter();
+    const { selecionarTreino } = useTreinoSelecionado();
     const {
         treinos,
         carregando,
@@ -63,6 +67,12 @@ function TreinosConteudo() {
         setTreinoParaDeletar(null);
     };
 
+    // Função para mostrar mais detalhes do treino
+    const handleMostrarMais = (treino) => {
+        selecionarTreino(treino.id);
+        router.push('/principal');
+    };
+
     return (
         <div className={styles.page}>
             <PesquisaTreinos
@@ -83,7 +93,7 @@ function TreinosConteudo() {
             <div className={styles.divInformacos}>
                 <div className={styles.divNomeCoisas}>
                     <h1>Nome</h1>
-                    <h1>Planejamento</h1>
+                    <h1>MOSTRAR MAIS</h1>
                     <h1>Ultima Mod.</h1>
                     <h1>Descrição</h1>
                     <h1>Anotações</h1>
@@ -93,7 +103,13 @@ function TreinosConteudo() {
                 {treinos && treinos.length > 0 ? treinos.map((treino, index) => (
                     <div key={index} className={styles.divInfoCoisas}>
                         <p>{treino.nome}</p>
-                        <p className={styles.pMostrar}>-</p>
+                        <button
+                            className={styles.btnMostrarMais}
+                            onClick={() => handleMostrarMais(treino)}
+                            title="Ver exercícios do treino"
+                        >
+                            MOSTRAR MAIS
+                        </button>
                         <p>{formatarData(treino.modificacao_em)}</p>
                         <p>{treino.descricao}</p>
                         <p>{treino.anotacoes}</p>

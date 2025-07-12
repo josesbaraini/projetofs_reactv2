@@ -12,17 +12,21 @@ const apiRoutes = {
     cadastro: `${API_BASE_URL}/user/cadastro`,
     login: `${API_BASE_URL}/user/login`,
     autenticar: `${API_BASE_URL}/user/autenticar`,
+    lastCheck: (userId) => `${API_BASE_URL}/user/lastcheck/${userId}`,
+    atualizarLastCheck: (userId) => `${API_BASE_URL}/user/lastcheck/${userId}`,
     //dados
     getDadosBasicos: (userId) => `${API_BASE_URL}/user/dadosbasicos/${userId}`,
     getDadosAvancandos: (userId) => `${API_BASE_URL}/user/dadosavancados/${userId}`,
     atualizarDadosBasicos: (userId) => `${API_BASE_URL}/user/dadosbasicos/${userId}`,
     atualizarDadosAvancandos: (userId) => `${API_BASE_URL}/user/dadosavancados/${userId}`,
+    dadosPessoais: (userId) => `${API_BASE_URL}/user/dadospessoais/${userId}`,
     fotoPerfil: (userId) => `${API_BASE_URL}/user/fotoPerfil/${userId}`,
 
     // Treinos
     getTreinos: (userId) => `${API_BASE_URL}/treinos/user/${userId}`,
     cadastrarTreino: `${API_BASE_URL}/treinos/cadastrar`,
     deletarTreino: (treinoId) => `${API_BASE_URL}/treinos/deletar/${treinoId}`,
+    getPassos: `${API_BASE_URL}/passos/user`,
 
     // Notificações
     getNotificacoes: (userId) => `${API_BASE_URL}/notificacoes/${userId}`,

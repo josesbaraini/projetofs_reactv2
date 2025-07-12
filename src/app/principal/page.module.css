@@ -3,88 +3,204 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    gap: 32px;
+    padding: 10px;
+    gap: 10px;
     flex: 1;
     background: linear-gradient(135deg, var(--fundo1) 0%, var(--fundo2) 100%);
-  }
+}
 
-.button{
-    width: 120px;
-    height: 30px;
-    cursor: pointer;
-    border-radius: 15px;
-    border: solid var(--borda) 2px;
-    color: var(--texto);
-    font-size: 15px;
-    font-weight: bold;
-    transition: 0.6s;
-    background-color: var(--fundoBtn);
-}
-.painel table{
-    width: 100%;
-    height: 95%;
-    text-align: center;
-    border: #fff 1px solid;
-}
-.tdSituacao{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
 
-}
-.painel table td{
 
-    flex-direction: column;
-    border: solid var(--borda) 2px;
-}
-.button:hover{
-    background-color: var(--fundoBtnHover);
-    border: solid var(--fundoBtn) 2px;
-    transform: scale(1.005);
-    color: var(--contraste);
-}
-.painel {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-width: 350px;
-    height: 80dvh;
-    width: 80dvw;
-    background-color: var(--fundo1);
-    border-radius: 10px;
-    padding: 20px;
-    border: solid var(--borda) 2px;
-  }
-
-.posTabela{
-    height: 10%;
- 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.botoes{
-    justify-content: space-between;
-    display: flex;
-    flex-direction: column;
-}
-.botoes a{
-    font-weight: bold;
-    font-size: 15px;
-}
-.informacoes{
+.divInformacoes {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    text-align: start;
+    width: 100%;
+    max-width: 800px;
+    min-height: 300px;
+    max-height: 600px;
+    background-color: var(--fundo1);
+    border: solid #ffffff 2px;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+    text-align: center;
+    overflow-y: auto;
 }
 
-.situacao{
-    width: 35px;
-    height: 35px;
-    background-color: var(--superContraste);
-    border-radius: 50%; 
-    
+.divInformacoes:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.divNomeCoisas {
+    height: 45px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--texto);
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.divNomeCoisas h1 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--texto);
+}
+
+.divLinha {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: var(--borda);
+    bottom: 0;
+}
+
+.divPassos {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px 0;
+}
+
+.divInfoCoisas {
+    align-items: center;
+    height: 40px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    font-size: 12px;
+    color: var(--texto);
+    margin-top: 8px;
+    padding: 8px 0;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.divInfoCoisas:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.divInfoCoisas p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--texto);
+    flex: 1;
+    text-align: center;
+}
+
+.btnDeletar {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--texto);
+    transition: all 0.3s ease;
+    padding: 5px;
+    border-radius: 5px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnDeletar:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.btnDeletar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.carregando {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: var(--texto);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.semResultados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: var(--texto);
+    font-size: 16px;
+    opacity: 0.7;
+    margin-top: 20px;
+}
+
+.erro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-top: 10px;
+    color: #ff4444;
+    font-size: 14px;
+    background-color: rgba(255, 68, 68, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding: 5px;
+    }
+
+    .painel {
+        padding: 1.5rem;
+        max-width: 95%;
+    }
+
+    .divNomeCoisas h1 {
+        font-size: 12px;
+    }
+
+    .divInfoCoisas p {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .painel {
+        padding: 1rem;
+    }
+
+    .divInformacoes {
+        padding: 10px;
+    }
+
+    .divNomeCoisas h1 {
+        font-size: 10px;
+    }
+
+    .divInfoCoisas p {
+        font-size: 9px;
+    }
+
+    .btnDeletar {
+        font-size: 14px;
+    }
 }

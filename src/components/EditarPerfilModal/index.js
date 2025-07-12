@@ -60,39 +60,64 @@ export default function EditarPerfilModal({ isOpen, onClose, dadosUsuario }) {
         setMensagem("");
 
         try {
-            // Se há uma foto selecionada, enviar para a API
-            if (fotoPerfil) {
+            // Preparar dados para atualização
+            const dadosParaAtualizar = {};
 
+            // Adicionar apenas campos que foram alterados
+            if (nome !== dadosUsuario.nome) {
+                dadosParaAtualizar.nome = nome;
+            }
+            if (email !== dadosUsuario.email) {
+                dadosParaAtualizar.email = email;
+            }
+            if (telefone !== dadosUsuario.telefone) {
+                dadosParaAtualizar.telefone = telefone;
+            }
+            if (senha && senha.trim() !== "") {
+                dadosParaAtualizar.senha = senha;
+            }
 
-                const formData = new FormData();
-                formData.append('profileImage', fotoPerfil); // 'foto' é o nome do campo esperado pela API
-
-
-                for (let [key, value] of formData.entries()) {
-                    console.log(key, value);
-                }
-
-                // Pega o ID do usuário do contexto
-                const userId = usuario.id;
-
-                const response = await fetch(apiRoutes.fotoPerfil(userId), {
-                    method: 'POST',
-                    body: formData,
+            // Se há dados para atualizar, enviar para a API
+            if (Object.keys(dadosParaAtualizar).length > 0) {
+                console.log( dadosParaAtualizar)
+                const response = await fetch(apiRoutes.dadosPessoais(usuario.id), {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        campos: dadosParaAtualizar
+                    }),
                     credentials: 'include'
-                    // Não incluir Content-Type, o navegador define automaticamente para FormData
                 });
 
                 if (!response.ok) {
-                    throw new Error(`Erro ao enviar foto: ${response.status}`);
+                    const errorData = await response.json();
+                    throw new Error(errorData.erro || `Erro ${response.status}: ${response.statusText}`);
                 }
 
                 const result = await response.json();
-                console.log('Foto enviada com sucesso:', result);
+                console.log('Dados pessoais atualizados com sucesso:', result);
             }
 
-            // Aqui você pode adicionar outras chamadas para salvar nome, email, telefone, senha
-            // Por exemplo:
-            // await salvarDadosUsuario({ nome, email, telefone, senha });
+            // Se há uma foto selecionada, enviar para a API
+            if (fotoPerfil) {
+                const formData = new FormData();
+                formData.append('profileImage', fotoPerfil);
+
+                const responseFoto = await fetch(apiRoutes.fotoPerfil(usuario.id), {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'include'
+                });
+
+                if (!responseFoto.ok) {
+                    throw new Error(`Erro ao enviar foto: ${responseFoto.status}`);
+                }
+
+                const resultFoto = await responseFoto.json();
+                console.log('Foto enviada com sucesso:', resultFoto);
+            }
 
             setMensagem("Alterações salvas com sucesso!");
             setTimeout(() => {
