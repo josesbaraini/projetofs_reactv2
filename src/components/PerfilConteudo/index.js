@@ -73,7 +73,7 @@ export default function PerfilConteudo(props) {
                 <div className={styles.areaAvancada}>
                     <h1 className={styles.titulo}>Informações Avançadas</h1>
                     <div className={styles.opcao}>
-                        <p>IMC: {dadosCorporais.imc}</p>
+                        <p>IMC: {(dadosCorporais.peso/(dadosCorporais.altura**2)).toFixed(0)}</p>
                     </div>
                     <div className={styles.opcao}>
                         <p>Biotipo: {dadosCorporais.biotipo}</p>

@@ -43,6 +43,9 @@
     transition: all 0.3s ease;
 }
 
+.divEditarPerfil::-webkit-scrollbar {
+    display: none;
+}
 .divEditarPerfil:hover {
     box-shadow: 0 25px 50px var(--CTP_shadow);
     transform: translateY(-2px);

@@ -2,14 +2,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 0;
-    gap: 0;
+    justify-content: flex-start;
+    padding: 40px 20px;
+    gap: 20px;
     flex: 1;
     background: linear-gradient(135deg, var(--CTP_bg) 0%, var(--CTP_bg2) 100%);
     min-height: 100vh;
-    width: 100vw;
-    overflow: scroll;
+    width: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 .page::-webkit-scrollbar {
@@ -105,7 +106,37 @@
     border: 2px solid var(--CTP_border);
 }
 
+.carregando {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    color: var(--CTP_text);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.semNotificacoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    color: var(--CTP_text);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    background: var(--CTP_bg);
+    border: 2px solid var(--CTP_border);
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 6px 32px var(--CTP_shadow);
+}
+
 @media (max-width: 800px) {
+    .page {
+        padding: 30px 16px;
+    }
+
     .divcompleta {
         max-width: 98vw;
         padding: 20px 6vw 20px 6vw;
@@ -129,14 +160,13 @@
     .pessoa {
         right: 30%;
     }
-
-    .scrollArea {
-        height: 60vh;
-        max-height: 60vh;
-    }
 }
 
 @media (max-width: 500px) {
+    .page {
+        padding: 20px 12px;
+    }
+
     .divcompleta {
         min-width: 0;
         max-width: 100vw;
@@ -161,10 +191,5 @@
 
     .pessoa {
         right: 10%;
-    }
-
-    .scrollArea {
-        height: 50vh;
-        max-height: 50vh;
     }
 }

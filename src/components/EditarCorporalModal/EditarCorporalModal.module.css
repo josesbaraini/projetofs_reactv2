@@ -22,6 +22,10 @@
     height: 100%;
 }
 
+.divEditarCorporal::-webkit-scrollbar {
+    display: none;
+}
+
 .divEditarCorporal {
     padding: 20px;
     position: relative;
@@ -105,6 +109,14 @@
     background-color: rgba(172, 172, 172, 0.1);
     color: var(--texto);
     opacity: 0.8;
+}
+
+.campoReadOnly {
+    background-color: rgba(172, 172, 172, 0.1) !important;
+    color: var(--texto) !important;
+    opacity: 0.8;
+    cursor: not-allowed;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
 }
 
 .select {
