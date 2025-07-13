@@ -10,6 +10,16 @@
   --diferenciadorE: #00000020;
   --diferenciadorC: #ffffff20;
   --superContraste: #ff0000;
+  /* Cores padronizadas CTP_ para UI principal */
+  --CTP_bg: var(--fundo1);
+  --CTP_bg2: var(--fundo2);
+  --CTP_text: var(--texto);
+  --CTP_accent: var(--contraste);
+  --CTP_btn: var(--fundoBtn);
+  --CTP_btnHover: var(--fundoBtnHover);
+  --CTP_border: var(--bordax);
+  --CTP_shadow: #00000060;
+  --CTP_superAccent: var(--superContraste);
 }
 
 @media (prefers-color-scheme: dark) {

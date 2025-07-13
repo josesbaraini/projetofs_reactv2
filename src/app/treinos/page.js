@@ -96,9 +96,7 @@ function TreinosConteudo() {
                     <h1>MOSTRAR MAIS</h1>
                     <h1>Ultima Mod.</h1>
                     <h1>Descrição</h1>
-                    <h1>Anotações</h1>
                     <h1>Deletar</h1>
-                    <div className={styles.divLinha}></div>
                 </div>
                 {treinos && treinos.length > 0 ? treinos.map((treino, index) => (
                     <div key={index} className={styles.divInfoCoisas}>
@@ -112,7 +110,6 @@ function TreinosConteudo() {
                         </button>
                         <p>{formatarData(treino.modificacao_em)}</p>
                         <p>{treino.descricao}</p>
-                        <p>{treino.anotacoes}</p>
                         <button
                             className={styles.btnDeletar}
                             onClick={() => handleAbrirConfirmacaoDeletar(treino)}
@@ -121,7 +118,6 @@ function TreinosConteudo() {
                         >
                             🗑️
                         </button>
-                        <div className={styles.divLinha}></div>
                     </div>
                 )) : !carregando && (
                     <div className={styles.semResultados}>

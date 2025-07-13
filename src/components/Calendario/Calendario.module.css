@@ -45,7 +45,9 @@
 }
 
 .diaEvento:hover {
-    background-color: var(--borda);
+   border: 2px var(--contraste) solid;
+   color: var(--contraste);
+   background-color: black;
     transform: scale(1.05);
 }
 

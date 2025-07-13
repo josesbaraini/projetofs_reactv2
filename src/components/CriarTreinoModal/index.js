@@ -5,14 +5,15 @@ import { useUser } from '@/components/UserContext';
 import apiRoutes from '@/utils/apiRoutes';
 
 export default function CriarTreinoModal({ isOpen, onClose, onTreinoCriado }) {
-    const {usuario} = useUser();
+    const { usuario } = useUser();
     const [passos, setPassos] = useState([]);
     const [showCriaPasso, setShowCriaPasso] = useState(false);
 
     // Estados para os campos do treino
     const [treinoNome, setTreinoNome] = useState("");
     const [treinoDescricao, setTreinoDescricao] = useState("");
-    const [treinoAnotacoes, setTreinoAnotacoes] = useState("");
+    const [treinoData, setTreinoData] = useState(""); // NOVO: data
+    const [treinoRepetir, setTreinoRepetir] = useState(false); // NOVO: repetir
 
     // Estados para os campos do passo
     const [passoNome, setPassoNome] = useState("");
@@ -29,7 +30,8 @@ export default function CriarTreinoModal({ isOpen, onClose, onTreinoCriado }) {
         if (isOpen) {
             setTreinoNome("");
             setTreinoDescricao("");
-            setTreinoAnotacoes("");
+            setTreinoData("");
+            setTreinoRepetir(false);
             setPassos([]);
             setShowCriaPasso(false);
             setMensagem("");
@@ -66,9 +68,24 @@ export default function CriarTreinoModal({ isOpen, onClose, onTreinoCriado }) {
             usuario_id: usuario.id,
             nome: treinoNome,
             descricao: treinoDescricao,
-            anotacoes: treinoAnotacoes,
-            passos: passos
+            passos: passos,
+            data_treino: treinoData || null, // Envia o valor YYYY-MM-DD direto
+            repetir: treinoRepetir ? 1 : 0 // NOVO: repetir
         };
+        /*
+        // Exemplo de objeto enviado para a requisição:
+        {
+            usuario_id: 2,
+            nome: "Treino Superior",
+            descricao: "Treino de peito e costas",
+            passos: [
+                { nome: "Supino", peso: 40, repeticoes: 10, series: 3 },
+                { nome: "Puxada", peso: 30, repeticoes: 12, series: 3 }
+            ],
+            data_treino: "2024-07-13T00:00:00.000Z",
+            repetir: 1
+        }
+        */
         setCarregando(true);
         setMensagem("");
         try {
@@ -111,9 +128,15 @@ export default function CriarTreinoModal({ isOpen, onClose, onTreinoCriado }) {
                         <p>Descrição:</p>
                         <input value={treinoDescricao} onChange={e => setTreinoDescricao(e.target.value)} />
                     </div>
+                    {/* NOVO: campo de data */}
                     <div style={{ marginBottom: 10 }}>
-                        <p>Anotações:</p>
-                        <input value={treinoAnotacoes} onChange={e => setTreinoAnotacoes(e.target.value)} />
+                        <p>Data do treino:</p>
+                        <input type="date" value={treinoData} onChange={e => setTreinoData(e.target.value)} />
+                    </div>
+                    {/* NOVO: campo de repetir */}
+                    <div style={{ marginBottom: 10, display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <input type="checkbox" id="repetir" checked={treinoRepetir} onChange={e => setTreinoRepetir(e.target.checked)} />
+                        <label htmlFor="repetir">Repetir semanalmente</label>
                     </div>
                     <div className={styles.divPassosBotoes}>
                         <div>

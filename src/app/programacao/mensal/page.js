@@ -115,7 +115,7 @@ function ProgramacaoMensalConteudo() {
                     {formatarDataApenas(evento.data)}
                   </span>
                   <span className={styles.eventoNome}>
-                    - {evento.nome}
+                  {evento.nome}
                   </span>
                 </div>
               ))}

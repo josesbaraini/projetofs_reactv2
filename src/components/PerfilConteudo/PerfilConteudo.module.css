@@ -56,10 +56,10 @@
 .btnEditarPerfil {
     margin: 20px auto;
     padding: 12px 24px;
-    background-color: var(--fundoBtn);
-    color: var(--texto);
-    border: 2px solid var(--borda);
-    border-radius: 10px;
+    background: linear-gradient(135deg, var(--CTP_btn) 0%, var(--CTP_btnHover) 100%);
+    color: var(--CTP_text);
+    border: 2px solid var(--CTP_border);
+    border-radius: 12px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -67,27 +67,45 @@
     display: block;
     text-align: center;
     min-width: 150px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 16px var(--CTP_shadow);
+}
+
+.btnEditarPerfil::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
 }
 
 .btnEditarPerfil:hover {
-    background-color: var(--borda);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, var(--CTP_btnHover) 0%, var(--CTP_btn) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px var(--CTP_shadow);
+    border-color: var(--CTP_accent);
+}
+
+.btnEditarPerfil:hover::before {
+    left: 100%;
 }
 
 .btnEditarPerfil:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--CTP_shadow);
 }
 
 .btnEditarCorporal {
     margin: 20px auto;
     padding: 12px 24px;
-    background-color: var(--fundoBtn);
-    color: var(--texto);
-    border: 2px solid var(--borda);
-    border-radius: 10px;
+    background: linear-gradient(135deg, var(--CTP_btn) 0%, var(--CTP_btnHover) 100%);
+    color: var(--CTP_text);
+    border: 2px solid var(--CTP_border);
+    border-radius: 12px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -95,16 +113,34 @@
     display: block;
     text-align: center;
     min-width: 200px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 16px var(--CTP_shadow);
+}
+
+.btnEditarCorporal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
 }
 
 .btnEditarCorporal:hover {
-    background-color: var(--borda);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, var(--CTP_btnHover) 0%, var(--CTP_btn) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px var(--CTP_shadow);
+    border-color: var(--CTP_accent);
+}
+
+.btnEditarCorporal:hover::before {
+    left: 100%;
 }
 
 .btnEditarCorporal:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--CTP_shadow);
 }

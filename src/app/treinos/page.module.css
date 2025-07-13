@@ -175,7 +175,22 @@
     padding: 20px;
     border: #fff 2px solid;
     text-align: center;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
 }
+
+.divInformacos::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+/* Anotação: Scroll está oculto visualmente, mas a rolagem continua funcionando para manter o visual limpo e minimalista, conforme guideline do projeto. */
 
 .divNomeCoisas {
     height: 37px;
@@ -185,12 +200,54 @@
     font-size: 10px;
 }
 
+.divNomeCoisas,
+.divInfoCoisas {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.2fr 2fr 2fr 0.7fr;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    gap: 0;
+    min-height: 37px;
+}
+
+.divNomeCoisas h1,
+.divInfoCoisas p,
+.divInfoCoisas button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0 4px;
+    box-sizing: border-box;
+}
+
+.divNomeCoisas h1 {
+    font-size: 18px;
+}
+
+.divInfoCoisas p {
+    font-size: 14px;
+}
+
+.divInfoCoisas button {
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px var(--CTP_shadow);
+}
+
 .divLinha {
-    position: absolute;
+    grid-column: 1 / -1;
+    position: relative;
     width: 100%;
     height: 3px;
     background-color: var(--borda);
     bottom: 0;
+    margin-top: 2px;
 }
 
 .divInfoCoisas {
@@ -220,16 +277,52 @@
 }
 
 .divAddTreinos button {
-    width: 150px;
-    height: 30px;
-    cursor: pointer;
-    border-radius: 15px;
-    border: solid var(--borda) 2px;
+    width: 100%;
+    max-width: 300px;
+    height: 55px;
+    border-radius: 12px;
+    border: 2px solid var(--borda);
     color: var(--texto);
-    font-size: 15px;
-    font-weight: bold;
-    transition: 0.6s;
-    background-color: var(--fundoBtn);
+    font-size: 18px;
+    font-weight: 700;
+    font-family: inherit;
+    background: linear-gradient(135deg, var(--fundoBtn) 0%, var(--fundoBtnHover) 100%);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    box-shadow: 0 10px 25px var(--CTP_shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divAddTreinos button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+    z-index: 1;
+}
+
+.divAddTreinos button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px var(--CTP_shadow);
+    background: linear-gradient(135deg, var(--fundoBtnHover) 0%, var(--fundoBtn) 100%);
+}
+
+.divAddTreinos button:hover::before {
+    left: 100%;
+}
+
+.divAddTreinos button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px var(--CTP_shadow);
 }
 
 .divCriaTreino {
@@ -458,6 +551,7 @@
 }
 
 .btnDeletar {
+
     background: none;
     border: none;
     cursor: pointer;
@@ -509,4 +603,38 @@
 .btnMostrarMais:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+.btnMostrarMais:hover:not(:disabled),
+.btnDeletar:hover:not(:disabled) {
+
+    color: var(--CTP_text);
+    box-shadow: 0 4px 16px var(--CTP_shadow);
+    transform: scale(1.08);
+}
+
+@media (max-width: 900px) {
+    .divInformacos {
+        width: 98vw;
+        padding: 4px;
+    }
+
+    .divNomeCoisas,
+    .divInfoCoisas {
+        font-size: 10px;
+        grid-template-columns: 1fr 1fr 1fr 1.5fr 1.5fr 0.7fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .divInformacos {
+        width: 100vw;
+        padding: 2px;
+    }
+
+    .divNomeCoisas,
+    .divInfoCoisas {
+        font-size: 8px;
+        grid-template-columns: 1fr 0.8fr 1fr 1.2fr 1.2fr 0.7fr;
+    }
 }

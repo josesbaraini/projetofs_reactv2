@@ -1,34 +1,47 @@
 .page {
     display: flex;
     flex-direction: column;
-    align-items: initial;
-    justify-content: initial;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
     gap: 32px;
     flex: 1;
-    background: linear-gradient(135deg, var(--fundo1) 0%, var(--fundo2) 100%);
-
+    background: linear-gradient(135deg, var(--CTP_bg) 0%, var(--CTP_bg2) 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
 
 .cima {
     display: flex;
-    height: 5%;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    max-width: 1200px;
+    padding: 16px 24px;
+    background: var(--CTP_bg);
+    border: 2px solid var(--CTP_border);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px var(--CTP_shadow);
+    color: var(--CTP_text);
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 
 .cima p {
-    margin-left: 20px;
+    margin: 0;
+    color: var(--CTP_text);
 }
 
 .baixo {
     display: flex;
-    height: 95%;
     width: 100%;
+    max-width: 1200px;
     padding: 20px;
     flex-wrap: wrap;
-    gap: 40px;
-    justify-content: space-around;
-
+    gap: 24px;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .dia {
@@ -84,4 +97,151 @@
 .resposta {
     font-weight: 900;
 
+}
+
+.eventoCard {
+    background: var(--CTP_bg);
+    border: 2px solid var(--CTP_border);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px var(--CTP_shadow);
+    padding: 24px;
+    margin: 0;
+    min-width: 280px;
+    max-width: 360px;
+    color: var(--CTP_text);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.eventoCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: left 0.5s ease;
+}
+
+.eventoCard:focus,
+.eventoCard:hover {
+    border-color: var(--CTP_accent);
+    box-shadow: 0 12px 32px var(--CTP_shadow);
+    transform: translateY(-4px);
+}
+
+.eventoCard:hover::before {
+    left: 100%;
+}
+
+.eventoCardHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--CTP_border);
+}
+
+.eventoCardNome {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--CTP_accent);
+}
+
+.eventoCardData {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--CTP_text);
+    opacity: 0.8;
+    background: var(--CTP_bg2);
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--CTP_border);
+}
+
+.eventoCardDescricao {
+    font-size: 1rem;
+    margin-bottom: 16px;
+    color: var(--CTP_text);
+    opacity: 0.9;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.eventoCardDica {
+    font-size: 0.9rem;
+    color: var(--CTP_accent);
+    opacity: 0.8;
+    margin-top: auto;
+    font-style: italic;
+    padding: 8px 12px;
+    background: none;
+    border-radius: 8px;
+    border: 1px solid var(--CTP_border);
+    width: 100%;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding: 10px;
+    }
+
+    .cima {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
+
+    .baixo {
+        padding: 10px;
+        gap: 16px;
+    }
+
+    .eventoCard {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .eventoCardNome {
+        font-size: 1.2rem;
+    }
+
+    .eventoCardData {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cima {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .eventoCard {
+        padding: 16px;
+    }
+
+    .eventoCardNome {
+        font-size: 1.1rem;
+    }
+
+    .eventoCardDescricao {
+        font-size: 0.9rem;
+    }
+
+    .eventoCardDica {
+        font-size: 0.8rem;
+    }
 }

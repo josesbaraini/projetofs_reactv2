@@ -3,101 +3,199 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 60px;
-    gap: 64px;
+    padding: 20px;
+    gap: 32px;
     flex: 1;
-
+    background: linear-gradient(135deg, var(--CTP_bg) 0%, var(--CTP_bg2) 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
 
 .painel {
     min-width: 350px;
     max-width: 800px;
     width: 90dvw;
-    border-radius: 10px;
+    border-radius: 20px;
     display: flex;
-    padding: 20px;
-    border: solid var(--borda) 2px;
+    padding: 32px;
+    border: 2px solid var(--CTP_border);
+    background: var(--CTP_bg);
+    box-shadow: 0 20px 40px var(--CTP_shadow);
+    transition: all 0.3s ease;
+    gap: 32px;
+}
+
+.painel:hover {
+    box-shadow: 0 25px 50px var(--CTP_shadow);
+    transform: translateY(-2px);
 }
 
 .linha {
-    width: 380px;
-    border-bottom: solid var(--borda) 2px;
+    width: 100%;
+    border-bottom: 2px solid var(--CTP_border);
     height: 1px;
     border-radius: 10px;
     overflow: hidden;
+    margin: 16px 0;
 }
 
 .nome {
-    width: 380px;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.nome h1 {
+    color: var(--CTP_text);
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
 }
 
 .coluna1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: initial;
-    gap: 20px;
-    min-width: 171px;
+    justify-content: flex-start;
+    gap: 24px;
+    min-width: 200px;
+    padding: 16px;
 }
 
 .conteudo {
     height: 80%;
     padding-top: 20px;
+    color: var(--CTP_text);
 }
 
 .opcoes {
     display: flex;
     flex-direction: column;
-    background-color: var(--fundo1);
-    height: 20%;
-    padding: 10px;
-    border-radius: 10px;
-    border: solid var(--borda) 2px;
+    background-color: var(--CTP_bg);
+    height: auto;
+    padding: 16px;
+    border-radius: 12px;
+    border: 2px solid var(--CTP_border);
+    box-shadow: 0 4px 16px var(--CTP_shadow);
+    transition: all 0.3s ease;
+}
 
-
+.opcoes:hover {
+    box-shadow: 0 8px 24px var(--CTP_shadow);
+    border-color: var(--CTP_accent);
 }
 
 .fotoPerfil svg {
-
-
-    background-color: var(--texto);
+    background-color: var(--CTP_text);
     border-radius: 50%;
-    border: 4px solid var(--borda);
+    border: 4px solid var(--CTP_border);
     cursor: pointer;
-    margin-left: 1.5dvw;
-    margin-right: 0.5dvw;
+    margin: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px var(--CTP_shadow);
+}
 
-
+.fotoPerfil svg:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px var(--CTP_shadow);
+    border-color: var(--CTP_accent);
 }
 
 .coluna2 {
-    padding: 10px;
+    padding: 16px;
     width: 80%;
-    color: black;
+    color: var(--CTP_text);
+    display: flex;
+    flex-direction: column;
 }
 
 .opcao {
-    height: 30px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     cursor: pointer;
-    transition: 0.3s;
-    border-radius: 10px;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    color: var(--CTP_text);
+    font-weight: 600;
+    background-color: var(--CTP_bg2);
+    border: 1px solid var(--CTP_border);
 }
 
 .opcao:hover {
-    background-color: var(--diferenciadorC);
+    background-color: rgb(120, 184, 0);
+    color: var(--CTP_bg);
+    transform: translateX(4px);
+    border-color: var(--CTP_accent);
+    box-shadow: 0 2px 8px var(--CTP_shadow);
+}
+
+.opcao p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+}
+.opcao p:hover {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
 }
 
 .barra {
     position: absolute;
-    width: 5px;
-    left: -10px;
-    top: 0px;
+    width: 4px;
+    left: -8px;
+    top: 0;
     height: 100%;
-    background-color: var(--contraste);
-    transition: 0.3s;
+    background-color: var(--CTP_text);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+    box-shadow: 0 0 8px var(--CTP_text);
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding: 10px;
+    }
+
+    .painel {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .coluna1 {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .coluna2 {
+        width: 100%;
+        padding: 0;
+    }
+
+    .nome h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .painel {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .opcoes {
+        padding: 12px;
+    }
+
+    .opcao {
+        height: 36px;
+        font-size: 12px;
+    }
 }

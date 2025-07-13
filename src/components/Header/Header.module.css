@@ -1,128 +1,185 @@
-.nav{
-height: 90%;
-text-align: center;
-display: flex;
-align-items: center;
-justify-content: initial;
-flex-grow: 7;
+/* Troca seletor global por classe local para CSS Modules */
+.header {
+    background: var(--fundo1);
+    box-shadow: 0 2px 16px 0 #00000060;
+    border-bottom: 2px solid var(--bordax);
+    transition: box-shadow 0.3s, border 0.3s;
+    min-height: 10dvh;
+    display: flex;
+    align-items: center;
+    padding: 0 2vw;
+    z-index: 100;
 }
-.ul{
+
+.logo {
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: filter 0.2s;
+}
+
+.logo:hover {
+    filter: brightness(1.2) drop-shadow(0 2px 8px var(--bordax));
+}
+
+.nav {
+    height: 90%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: initial;
+    flex-grow: 7;
+}
+
+.ul {
     display: flex;
     align-items: center;
     justify-content: initial;
     text-align: center;
     list-style: none;
     height: 100%;
-
-
+    gap: 2vw;
 }
-.nav ul{
-    list-style: none;
+
+.li {
+    margin-left: 2vw;
+    position: relative;
+    /* Para dropdown absoluto alinhar ao pai */
 }
-.logo{
-    height: 100%;
-    
+
+.li h1 {
+    transition: color 0.2s, text-shadow 0.2s;
     cursor: pointer;
-   
-}
-.li h1:hover{
-    color: var(--constraste);
-
-    transition: 0.3s ;
-}
-.li h1{
-    transition: 0.3s;
-    cursor: pointer;
-}
-.li{
-    margin-left: 4dvw;
-
-
+    color: var(--texto);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 8px;
 }
 
-.options{
+.li h1:hover {
+    color: var(--contraste);
+    text-shadow: 0 1px 4px var(--bordax);
+    /* Menos brilho */
+    background: var(--diferenciadorC);
+}
+
+.options {
     display: flex;
     align-items: center;
     justify-content: end;
     flex-grow: 2;
     height: 100%;
-
+    gap: 1vw;
 }
 
-.options svg{
-    background-color: var(--texto);
+.options svg {
+    background-color: var(--fundo1);
     border-radius: 50%;
-    border: 2px solid var(--borda);
+    border: 2px solid var(--bordax);
     cursor: pointer;
-    margin-left: 1.5dvw;
-    margin-right: 0.5dvw;
+    margin-left: 1vw;
+    margin-right: 0.5vw;
+    box-shadow: 0 2px 8px 0 #00000030;
+    transition: border 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s, fill 0.2s;
+    color: var(--texto);
+    /* Branco por padrão */
+    fill: var(--texto);
+    /* Branco por padrão */
 }
 
+.options svg:hover {
+    border: 2px solid var(--contraste);
+    background: var(--diferenciadorC);
+    box-shadow: 0 4px 16px 0 var(--bordax);
+    color: var(--contraste);
+    fill: var(--contraste);
+}
 
-.dropdown{
+.dropdown,
+.dropdownb {
     z-index: 20;
-    overflow: hidden;
-    transition: height 0.3s ease-in-out;
-    height: 65px;
     position: absolute;
-    display: flex;
-    top: 59px;
-    width: 140px;
+    top: 100%;
+    left: 0;
+    width: 180px;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    position: absolute;
+    justify-content: flex-start;
     background-color: var(--fundo1);
-    border-radius: 10px;
-    border: 1px solid var(--borda);
+    border-radius: 12px;
+    border: 1.5px solid var(--bordax);
+    box-shadow: 0 4px 24px 0 #00000050;
+    padding: 10px 0;
+    transform-origin: top;
+    transition: transform 0.25s cubic-bezier(.4, 1.3, .6, 1), opacity 0.2s;
 }
-.dropdownb{
-    z-index: 20;
-    overflow: hidden;
-    transition: height 0.3s ease-in-out;
-    height: 0px;
-    position: absolute;
+
+.dropdown {
     display: flex;
-    top: 59px;
-    width: 140px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    background-color: var(--fundo1);
-    border-radius: 10px;
-
+    transform: scaleY(1);
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
 }
 
-.dropdown li{
+.dropdownb {
+    display: flex;
+    transform: scaleY(0);
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.dropdown li {
     cursor: pointer;
+    padding: 12px 0;
+    width: 100%;
+    text-align: center;
+    color: var(--texto);
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+    font-size: 1.08rem;
 }
-.dropdown li:hover{
-    transition: 0.3s ease-in-out;
-    color: var(--constraste);
+
+.dropdown li:hover {
+    color: var(--contraste);
+    background: var(--diferenciadorC);
 }
-.relative{
+
+.relative {
     height: 10dvh;
     text-align: center;
     position: relative;
     justify-content: center;
     display: flex;
     flex-direction: column;
+    font-weight: 700;
 }
 
-.relative:hover{
+.relative:hover {
     text-decoration: underline;
 }
-.notInfo{
-    width: 15px;
-    height: 15px;
+
+.notInfo {
+    width: 17px;
+    height: 17px;
     background-color: var(--superContraste);
     border-radius: 50%;
     position: absolute;
     top: 0.7dvh;
     right: 6.7dvw;
+    box-shadow: 0 0 8px 2px var(--superContraste);
+    border: 2px solid var(--fundo1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
 }
-.abaUtilidades{
+
+.abaUtilidades {
     z-index: 20;
     position: absolute;
     bottom: -40dvh;
@@ -130,24 +187,25 @@ flex-grow: 7;
     width: 15dvw;
     min-width: 150px;
     right: 0;
-    border: 1px solid var(--borda);
+    border: 1.5px solid var(--bordax);
     display: flex;
     flex-direction: column;
     align-items: initial;
     justify-content: initial;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 10px;
-    transition: 1s;
+    transition: 0.7s cubic-bezier(.4, 1.3, .6, 1);
     background-color: var(--fundo1);
+    box-shadow: 0 4px 24px 0 #00000050;
 }
 
-.abaUtilidadesEsconder{
+.abaUtilidadesEsconder {
     z-index: 20;
     width: 0px;
     min-width: 0px;
     overflow: hidden;
     padding: 0px;
-    border: 1px solid var(--borda);
+    border: 1.5px solid var(--bordax);
     position: absolute;
     bottom: -40dvh;
     height: 40dvh;
@@ -156,24 +214,30 @@ flex-grow: 7;
     flex-direction: column;
     align-items: initial;
     justify-content: initial;
-    transition: 1s ;
+    transition: 0.7s cubic-bezier(.4, 1.3, .6, 1);
     background-color: var(--fundo1);
+    box-shadow: 0 4px 24px 0 #00000050;
 }
-.abaUtilidadesItem{
+
+.abaUtilidadesItem {
     display: flex;
     height: 4.5dvh;
     align-items: center;
     cursor: pointer;
-    cursor: pointer;
+    border-radius: 8px;
+    padding: 0 8px;
+    transition: background 0.2s, color 0.2s;
+}
 
-}
-.abaUtilidadesItem:hover{
+.abaUtilidadesItem:hover {
     background-color: var(--diferenciadorC);
-    transition: 0.3s ease-in-out;
-    border-radius: 10px;
+    color: var(--contraste);
+    transition: 0.3s;
 }
-.abaUtilidadesItem h1{
+
+.abaUtilidadesItem h1 {
     font-size: 20px;
     margin-left: 1dvw;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
-

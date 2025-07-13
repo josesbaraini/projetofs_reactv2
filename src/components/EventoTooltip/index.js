@@ -4,7 +4,7 @@ import styles from './EventoTooltip.module.css';
 import EditarEventoModal from '../EditarEventoModal';
 import { formatarData, formatarDataApenas } from '@/utils/dateUtils';
 
-export default function EventoTooltip({ eventos, onEventoUpdated }) {
+export default function EventoTooltip({ eventos, onEventoUpdated, modalOnly = false }) {
     const [tooltipVisivel, setTooltipVisivel] = useState(null);
     const [modalAberto, setModalAberto] = useState(false);
     const [eventoSelecionado, setEventoSelecionado] = useState(null);
@@ -32,6 +32,18 @@ export default function EventoTooltip({ eventos, onEventoUpdated }) {
             onEventoUpdated();
         }
     };
+
+    // Se for modalOnly, já abre o modal direto para o evento passado
+    if (modalOnly) {
+        return (
+            <EditarEventoModal
+                isOpen={true}
+                onClose={onEventoUpdated}
+                evento={eventos && eventos.length > 0 ? eventos[0] : null}
+                onEventoUpdated={handleEventoUpdated}
+            />
+        );
+    }
 
     if (!eventos || eventos.length === 0) {
         return <span>Nenhum</span>;

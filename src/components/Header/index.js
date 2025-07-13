@@ -11,13 +11,15 @@ import apiRoutes from "@/utils/apiRoutes"
 
 
 const HeaderConteudo = () => {
-    const { usuario, setUsuario } = useUser();
+    const { usuario, setUsuario, lastCheckVerificado, precisaVerificarNotificacoes, verificarECriarNotificacoes } = useUser();
     const [isOpen, setIsOpen] = useState(styles.dropdownb);
     const dropdownRef = useRef(null);
     const [notInfo, setNotInfo] = useState(false)
     const [abaUtilidades, setAbaUtilidades] = useState(styles.abaUtilidadesEsconder)
     const [isLogged, setIsLogged] = useState(false)
+    const [notificacoesJaCriadas, setNotificacoesJaCriadas] = useState(false)
     const router = useRouter();
+
     function mexeAbaUtilidades() {
         if (abaUtilidades === styles.abaUtilidadesEsconder) {
             setAbaUtilidades(styles.abaUtilidades)
@@ -46,13 +48,27 @@ const HeaderConteudo = () => {
         if (usuario) setIsLogged(true);
     }, [usuario]);
 
+    // Função para criar notificações - só executa quando precisaVerificarNotificacoes for true
+    useEffect(() => {
+        if (precisaVerificarNotificacoes && usuario?.id && !notificacoesJaCriadas) {
+            console.log('=== EXECUTANDO CRIAÇÃO DE NOTIFICAÇÕES ===');
+            setNotificacoesJaCriadas(true); // Marca como já criadas para evitar duplicação
+            verificarECriarNotificacoes(usuario.id);
+        }
+    }, [precisaVerificarNotificacoes, usuario?.id]);
+
+    // Reset do estado quando o usuário muda
+    useEffect(() => {
+        setNotificacoesJaCriadas(false);
+    }, [usuario?.id]);
+
     const getNotificacoes = async () => {
         if (!usuario?.id) return;
         const response = await fetch(apiRoutes.getNotificacoes(usuario.id), {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
         const data = await response.json();
         if (data.length > 0) {
@@ -65,9 +81,9 @@ const HeaderConteudo = () => {
             }
             return
         }
-      };
+    };
     useEffect(() => {
-       getNotificacoes()
+        getNotificacoes()
     }, [usuario]);
 
     return (<>{isLogged

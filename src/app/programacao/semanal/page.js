@@ -3,37 +3,28 @@ import styles from './page.module.css'
 import StatusGate from "@/components/StatusGate";
 import { useEventos } from '@/hooks/useEventos';
 import { useTreinos } from '@/hooks/useTreinos';
+import { formatarDataApenas } from '@/utils/dateUtils';
+import { useState } from 'react';
 import EventoTooltip from '@/components/EventoTooltip';
-
 
 function ProgramacaoSemanalConteudo() {
     const { eventos, carregando: carregandoEventos, getEventosSemanaAtual, recarregarEventos } = useEventos();
-    const { treinos, carregando: carregandoTreinos } = useTreinos();
-
+    const [eventoEditando, setEventoEditando] = useState(null);
     // Obter eventos da semana atual
-    const eventosSemana = getEventosSemanaAtual();
+    let eventosSemana = getEventosSemanaAtual();
 
-    // Função para obter eventos de um dia específico
-    const getEventosPorDia = (diaSemana) => {
-        const diasSemana = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-        const hoje = new Date();
-        const diaAtual = hoje.getDay();
-        const diasParaAdicionar = diasSemana.indexOf(diaSemana) - diaAtual;
-
-        const dataDia = new Date(hoje);
-        dataDia.setDate(hoje.getDate() + diasParaAdicionar);
-
-        return eventosSemana.filter(evento => {
-            const eventoData = new Date(evento.data);
-            const dataFormatada = dataDia.toISOString().split('T')[0];
-            const eventoDataFormatada = eventoData.toISOString().split('T')[0];
-            return eventoDataFormatada === dataFormatada;
-        });
-    };
+    // Ordenar eventos do mais próximo para o mais distante
+    eventosSemana = eventosSemana.slice().sort((a, b) => new Date(a.data) - new Date(b.data));
 
     // Função para recarregar eventos após edição
     const handleEventoUpdated = () => {
         recarregarEventos();
+        setEventoEditando(null);
+    };
+
+    // Função para duplo clique
+    const handleDoubleClick = (evento) => {
+        setEventoEditando(evento);
     };
 
     return (
@@ -43,88 +34,40 @@ function ProgramacaoSemanalConteudo() {
                 <p>Evento: {eventosSemana.length > 0 ? `${eventosSemana.length} evento(s)` : 'Nenhum'}</p>
             </div>
             <div className={styles.baixo}>
-                <div className={`${styles.dia} ${styles.atual}`}>
-                    <div className={`${styles.diaTitulo} ${styles.diaTituloatual}`}><p>Segunda</p></div>
-                    <div className={styles.treino}>
-                        <div className={styles.diaTitulo}><p>Segunda</p></div>
-                        <p>Treino:</p>
-                        <p className={styles.resposta}>Nenhum</p>
-                    </div>
-                    <div className={styles.evento}>
-                        <p>Evento:</p>
-                        <p className={styles.resposta}>
-                            <EventoTooltip eventos={getEventosPorDia('Segunda')} onEventoUpdated={handleEventoUpdated} />
-                        </p>
-                    </div>
-                </div>
-                <div className={styles.dia}>
-                    <div className={styles.diaTitulo}><p>Terça</p></div>
-                    <div className={styles.treino}>
-                        <p>Treino:</p>
-                        <p className={styles.resposta}>Nenhum</p>
-                    </div>
-                    <div className={styles.evento}>
-                        <p>Evento:</p>
-                        <p className={styles.resposta}>
-                            <EventoTooltip eventos={getEventosPorDia('Terça')} onEventoUpdated={handleEventoUpdated} />
-                        </p>
-                    </div>
-                </div>
-                <div className={styles.dia}>
-                    <div className={styles.diaTitulo}><p>Quarta</p></div>
-                    <div className={styles.treino}>
-                        <p>Treino:</p>
-                        <p className={styles.resposta}>Nenhum</p>
-                    </div>
-                    <div className={styles.evento}>
-                        <p>Evento:</p>
-                        <p className={styles.resposta}>
-                            <EventoTooltip eventos={getEventosPorDia('Quarta')} onEventoUpdated={handleEventoUpdated} />
-                        </p>
-                    </div>
-                </div>
-                <div className={styles.dia}>
-                    <div className={styles.diaTitulo}><p>Sexta</p></div>
-                    <div className={styles.treino}>
-                        <p>Treino:</p>
-                        <p className={styles.resposta}>Nenhum</p>
-                    </div>
-                    <div className={styles.evento}>
-                        <p>Evento:</p>
-                        <div className={styles.resposta}>
-                            <EventoTooltip eventos={getEventosPorDia('Sexta')} onEventoUpdated={handleEventoUpdated} />
+                {eventosSemana.length === 0 ? (
+                    <div style={{ color: '#fff', fontSize: 18, margin: '0 auto' }}>Nenhum evento para esta semana.</div>
+                ) : (
+                    eventosSemana.map(evento => (
+                        <div
+                            key={evento.id}
+                            className={styles.eventoCard}
+                            onDoubleClick={() => handleDoubleClick(evento)}
+                            tabIndex={0}
+                            title="Duplo clique para editar"
+                        >
+                            <div className={styles.eventoCardHeader}>
+                                <span className={styles.eventoCardNome}>{evento.nome}</span>
+                                <span className={styles.eventoCardData}>{formatarDataApenas(evento.data)}</span>
+                            </div>
+                            <div className={styles.eventoCardDescricao}>
+                                {evento.descricao || 'Sem descrição'}
+                            </div>
+                            <div className={styles.eventoCardDica}>
+                                Dê <b>duplo clique</b> no card para editar o evento
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div className={styles.dia}>
-                    <div className={styles.diaTitulo}><p>Sábado</p></div>
-                    <div className={styles.treino}>
-                        <p>Treino:</p>
-                        <p className={styles.resposta}>Nenhum</p>
-                    </div>
-                    <div className={styles.evento}>
-                        <p>Evento:</p>
-                        <p className={styles.resposta}>
-                            <EventoTooltip eventos={getEventosPorDia('Sábado')} onEventoUpdated={handleEventoUpdated} />
-                        </p>
-                    </div>
-                </div>
-                <div className={styles.dia}>
-                    <div className={styles.diaTitulo}><p>Domingo</p></div>
-                    <div className={styles.treino}>
-                        <p>Treino:</p>
-                        <p className={styles.resposta}>Nenhum</p>
-                    </div>
-                    <div className={styles.evento}>
-                        <p>Evento:</p>
-                        <div className={styles.resposta}>
-                            <EventoTooltip eventos={getEventosPorDia('Domingo')} onEventoUpdated={handleEventoUpdated} />
-                        </div>
-                    </div>
-                </div>
+                    ))
+                )}
             </div>
+            {/* Tooltip/modal de edição do evento selecionado */}
+            {eventoEditando && (
+                <EventoTooltip
+                    eventos={[eventoEditando]}
+                    onEventoUpdated={handleEventoUpdated}
+                    modalOnly={true}
+                />
+            )}
         </div>
-
     )
 }
 

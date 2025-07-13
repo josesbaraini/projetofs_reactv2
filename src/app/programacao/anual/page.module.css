@@ -1,14 +1,14 @@
 .page {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 20px;
     gap: 32px;
     flex: 1;
     width: 100dvw;
-    background: linear-gradient(135deg, var(--fundo1) 0%, var(--fundo2) 100%);
-
-
+    background: linear-gradient(135deg, var(--CTP_bg) 0%, var(--CTP_bg2) 100%);
+    min-height: 100vh;
+    position: relative;
 }
 
 .divCalendarios {
@@ -17,90 +17,134 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    max-height: 100dvh;
+    max-width: 1400px;
+    gap: 24px;
+    overflow: scroll;
+    padding-top: 10px;
+}
+.divCalendarios::-webkit-scrollbar {
+    display: none;
 }
 
 .divCalendario {
     width: 350px;
     height: 290px;
-    background-color: var(--fundo1);
-    border: 2px solid var(--borda);
-    border-radius: 10px;
-    padding: 10px;
+    background-color: var(--CTP_bg);
+    border: 2px solid var(--CTP_border);
+    border-radius: 16px;
+    padding: 16px;
     box-sizing: border-box;
+    box-shadow: 0 8px 24px var(--CTP_shadow);
+    transition: all 0.3s ease;
 }
 
+.divCalendario:hover {
+    box-shadow: 0 12px 32px var(--CTP_shadow);
+    border-color: var(--CTP_accent);
+}
 
 .divCoisas {
-    margin: 20px;
+    margin: 0;
     width: 350px;
     display: flex;
     flex-direction: column;
     height: 550px;
+    gap: 16px;
 }
 
 .divEventos {
-    margin-top: 10px;
+    margin-top: 0;
     flex-direction: column;
     padding: 20px;
     display: flex;
-    background-color: var(--fundo1);
-    border: 2px solid var(--borda);
-    border-radius: 10px;
+    background-color: var(--CTP_bg);
+    border: 2px solid var(--CTP_border);
+    border-radius: 16px;
     width: 350px;
     height: 200px;
     overflow-y: auto;
+    box-shadow: 0 8px 24px var(--CTP_shadow);
+    transition: all 0.3s ease;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.divEventos::-webkit-scrollbar {
+    display: none;
+}
+
+.divEventos:hover {
+    box-shadow: 0 12px 32px var(--CTP_shadow);
+    border-color: var(--CTP_accent);
 }
 
 .divEventos h3 {
     text-align: center;
-    color: var(--texto);
+    color: var(--CTP_accent);
     font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--CTP_border);
 }
 
 .divEventos p {
-    color: var(--texto);
+    color: var(--CTP_text);
     font-size: 14px;
-    margin: 5px 0;
-    padding: 5px;
-    border-radius: 4px;
-    background-color: var(--fundo2);
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 6px;
+    background-color: var(--CTP_bg2);
+    border: 1px solid var(--CTP_border);
 }
 
 .eventoItem {
     display: flex;
     align-items: center;
-    padding: 6px 8px;
-    margin: 3px 0;
-    background-color: var(--fundo2);
-    border: 1px solid var(--borda);
-    border-radius: 4px;
+    color: black;
+    padding: 8px 12px;
+    margin: 6px 0;
+    background-color: var(--CTP_bg2);
+    border: 1px solid var(--CTP_border);
+    border-radius: 6px;
     font-size: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.eventoItem:hover {
+    background-color: var(--CTP_accent);
+    color: var(--CTP_bg);
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px var(--CTP_shadow);
+    border-color: var(--CTP_accent);
 }
 
 .eventoData {
-    font-weight: bold;
+    font-weight: 700;
     margin-right: 8px;
     min-width: 60px;
-    color: var(--borda);
+    color: inherit;
 }
 
 .eventoNome {
     flex: 1;
-    color: var(--texto);
+    color: inherit;
     font-size: 11px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-weight: 500;
 }
 
 .semEventos {
-    color: var(--texto);
+    color: var(--CTP_text);
     font-size: 12px;
     font-style: italic;
     text-align: center;
     margin-top: 20px;
+    opacity: 0.7;
 }
 
 .carregando {
@@ -108,7 +152,73 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: var(--texto);
+    color: var(--CTP_text);
     font-size: 18px;
     font-weight: bold;
+    background: linear-gradient(135deg, var(--CTP_bg) 0%, var(--CTP_bg2) 100%);
+}
+
+@media (max-width: 1200px) {
+    .divCalendarios {
+        max-width: 1000px;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding: 10px;
+    }
+
+    .divCalendarios {
+        gap: 12px;
+    }
+
+    .divCoisas {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .divCalendario {
+        width: 100%;
+        height: 250px;
+    }
+
+    .divEventos {
+        width: 100%;
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page {
+        padding: 8px;
+    }
+
+    .divCalendarios {
+        gap: 8px;
+    }
+
+    .divCoisas {
+        max-width: 100%;
+    }
+
+    .divCalendario {
+        height: 220px;
+        padding: 12px;
+    }
+
+    .divEventos {
+        height: 160px;
+        padding: 16px;
+    }
+
+    .divEventos h3 {
+        font-size: 16px;
+    }
+
+    .eventoItem {
+        padding: 6px 8px;
+        font-size: 11px;
+    }
 }

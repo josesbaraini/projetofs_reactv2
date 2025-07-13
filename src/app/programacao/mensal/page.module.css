@@ -5,164 +5,208 @@
     padding: 20px;
     gap: 32px;
     flex: 1;
-
-
+    background: linear-gradient(135deg, var(--CTP_bg) 0%, var(--CTP_bg2) 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
 
 .divInfos {
-    padding: 10px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 30dvw;
     height: 80dvh;
+    gap: 16px;
 }
 
 .divCalendario {
     width: 65dvw;
     height: 45dvh;
-    border: solid #fff 2px;
-    background-color: rgb(150, 150, 150);
+    border: 2px solid var(--CTP_border);
+    background-color: var(--CTP_bg);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px var(--CTP_shadow);
+    transition: all 0.3s ease;
+}
+
+.divCalendario:hover {
+    box-shadow: 0 12px 32px var(--CTP_shadow);
+    border-color: var(--CTP_accent);
 }
 
 .divEventosDoMes {
-    height: 45%;
+    height: 55%;
     text-align: center;
     width: 100%;
-    background-color: var(--fundo1);
-    border: 2px var(--borda) solid;
-    border-radius: 10px;
+    background-color: var(--CTP_bg);
+    border: 2px solid var(--CTP_border);
+    border-radius: 16px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 8px 24px var(--CTP_shadow);
+    transition: all 0.3s ease;
+}
+
+.divEventosDoMes:hover {
+    box-shadow: 0 12px 32px var(--CTP_shadow);
+    border-color: var(--CTP_accent);
+}
+
+.divEventosDoMes h1 {
+    color: var(--CTP_text);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 16px 0;
 }
 
 .divEventoSelecionado {
     text-align: center;
-    background-color: var(--fundo1);
-    border: 2px var(--borda) solid;
-    border-radius: 10px;
+    background-color: var(--CTP_bg);
+    border: 2px solid var(--CTP_border);
+    border-radius: 16px;
     width: 100%;
     height: 35%;
-    padding: 15px;
+    padding: 20px;
     overflow-y: auto;
+    box-shadow: 0 8px 24px var(--CTP_shadow);
+    transition: all 0.3s ease;
+    color: var(--CTP_text);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.divEventoSelecionado::-webkit-scrollbar {
+    display: none;
+}
+
+.divEventoSelecionado:hover {
+    box-shadow: 0 12px 32px var(--CTP_shadow);
+    border-color: var(--CTP_accent);
+}
+
+.divEventoSelecionado h1 {
+    color: var(--CTP_accent);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
 }
 
 .seletorMes {
-    margin: 10px 0;
+    margin: 16px 0;
 }
 
 .seletorMes select {
-    background-color: var(--fundo2);
-    color: var(--texto);
-    border: 2px solid var(--borda);
+    background-color: var(--CTP_bg);
+    color: var(--CTP_text);
+    border: 2px solid var(--CTP_border);
     border-radius: 8px;
     padding: 8px 12px;
     font-size: 14px;
     cursor: pointer;
     outline: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 .seletorMes select:focus {
-    border-color: var(--borda);
-    box-shadow: 0 0 4px var(--borda);
+    border-color: var(--CTP_accent);
+    box-shadow: 0 0 8px var(--CTP_accent);
+    background-color: var(--CTP_bg);
 }
 
 .listaEventos {
     flex: 1;
     overflow-y: auto;
-    padding: 10px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--borda) var(--fundo1);
+    padding: 16px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .listaEventos::-webkit-scrollbar {
-    width: 6px;
-}
-
-.listaEventos::-webkit-scrollbar-track {
-    background: var(--fundo1);
-}
-
-.listaEventos::-webkit-scrollbar-thumb {
-    background: var(--borda);
-    border-radius: 3px;
-}
-
-.listaEventos::-webkit-scrollbar-thumb:hover {
-    background: var(--borda);
+    display: none;
 }
 
 .eventoItem {
     display: flex;
     align-items: center;
-    padding: 8px 12px;
-    margin: 5px 0;
-    background-color: var(--fundo2);
-    border: 1px solid var(--borda);
-    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    background-color: var(--CTP_bg);
+    border: 1px solid var(--CTP_border);
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     text-align: left;
+    color: var(--CTP_text);
 }
 
 .eventoItem:hover {
-    background-color: var(--borda);
-    color: white;
-    transform: translateX(5px);
+    background-color: var(--CTP_accent);
+    color: var(--CTP_bg);
+    transform: translateX(8px);
+    box-shadow: 0 4px 16px var(--CTP_shadow);
+    border-color: var(--CTP_accent);
 }
 
 .eventoItem.eventoSelecionado {
-    background-color: var(--borda);
-    color: white;
-    border-color: var(--borda);
+    background-color: var(--CTP_accent);
+    color: var(--CTP_bg);
+    border-color: var(--CTP_accent);
+    box-shadow: 0 4px 16px var(--CTP_shadow);
 }
 
 .eventoData {
-    font-weight: bold;
-    margin-right: 8px;
+    font-weight: 700;
+    margin-right: 12px;
     min-width: 80px;
+    color: inherit;
 }
 
 .eventoNome {
     flex: 1;
+    font-weight: 500;
+    color: inherit;
 }
 
 .eventoDescricao {
-    margin-top: 10px;
-    line-height: 1.5;
+    margin-top: 16px;
+    line-height: 1.6;
     text-align: justify;
+    color: var(--CTP_text);
+    opacity: 0.9;
 }
 
 .erro {
-    color: #ff4444;
+    color: var(--CTP_superAccent);
     font-weight: bold;
     text-align: center;
-    padding: 10px;
+    padding: 16px;
+    background-color: rgba(255, 68, 68, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 68, 68, 0.3);
 }
 
 .dicaEdicao {
-    color: var(--borda);
+    color: var(--CTP_accent);
     font-size: 12px;
     font-style: italic;
-    margin-top: 10px;
+    margin-top: 16px;
     display: block;
     text-align: center;
-}
-
-.divEventoSelecionado:hover {
-    border-color: var(--borda);
-    transition: border-color 0.2s ease;
+    opacity: 0.8;
 }
 
 .btnCriarEvento {
-    margin-top: 15px;
+    margin-top: 16px;
     width: 100%;
-    padding: 12px 20px;
-    background-color: var(--borda);
-    color: white;
-    border: 2px solid var(--borda);
-    border-radius: 10px;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, var(--CTP_btn) 0%, var(--CTP_btnHover) 100%);
+    color: var(--CTP_text);
+    border: 2px solid var(--CTP_border);
+    border-radius: 12px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -171,16 +215,92 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 16px var(--CTP_shadow);
+}
+
+.btnCriarEvento::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
 }
 
 .btnCriarEvento:hover {
-    background-color: white;
-    color: var(--borda);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, var(--CTP_btnHover) 0%, var(--CTP_btn) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px var(--CTP_shadow);
+    border-color: var(--CTP_accent);
+}
+
+.btnCriarEvento:hover::before {
+    left: 100%;
 }
 
 .btnCriarEvento:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--CTP_shadow);
+}
+
+@media (max-width: 768px) {
+    .page {
+        flex-direction: column;
+        padding: 10px;
+        gap: 16px;
+    }
+
+    .divInfos {
+        width: 100%;
+        height: auto;
+        gap: 12px;
+    }
+
+    .divCalendario {
+        width: 100%;
+        height: 40dvh;
+    }
+
+    .divEventosDoMes {
+        height: auto;
+        min-height: 200px;
+    }
+
+    .divEventoSelecionado {
+        height: auto;
+        min-height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page {
+        padding: 8px;
+        gap: 12px;
+    }
+
+    .divInfos {
+        padding: 12px;
+    }
+
+    .divEventosDoMes h1 {
+        font-size: 1.3rem;
+    }
+
+    .divEventoSelecionado h1 {
+        font-size: 1.3rem;
+    }
+
+    .eventoItem {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .btnCriarEvento {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
 }

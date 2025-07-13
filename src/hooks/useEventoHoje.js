@@ -54,7 +54,6 @@ export function useEventoHoje() {
     };
 
     // Get all trainings for a user
-    // TODO: MODIFICAR DEPOIS - FUNÇÃO RELACIONADA A TREINOS
     const getAllTreinos = async (userId) => {
         try {
             const response = await fetch(apiRoutes.getTreinos(userId), {
@@ -74,6 +73,81 @@ export function useEventoHoje() {
             }
         } catch (error) {
             console.error('Error fetching trainings:', error);
+            throw error;
+        }
+    };
+
+    // Get passos for a specific training
+    const getPassosTreino = async (treinoId) => {
+        try {
+            const response = await fetch(apiRoutes.getPassos, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ treino_Id: treinoId })
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Passos do treino fetched:', result);
+                return result;
+            } else {
+                throw new Error('Failed to fetch passos');
+            }
+        } catch (error) {
+            console.error('Error fetching passos:', error);
+            throw error;
+        }
+    };
+
+    // Create training
+    const criarTreino = async (treino) => {
+        try {
+            const response = await fetch(apiRoutes.cadastrarTreino, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(treino)
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Training created:', result);
+                return result;
+            } else {
+                throw new Error('Failed to create training');
+            }
+        } catch (error) {
+            console.error('Error creating training:', error);
+            throw error;
+        }
+    };
+
+    // Update training with data_treino
+    const atualizarTreinoComData = async (treinoId, dados) => {
+        try {
+            const response = await fetch(`${apiRoutes.cadastrarTreino.replace('/cadastrar', '')}/${treinoId}`, {
+                method: 'PATCH',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ campos: dados })
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Training updated:', result);
+                return result;
+            } else {
+                throw new Error('Failed to update training');
+            }
+        } catch (error) {
+            console.error('Error updating training:', error);
             throw error;
         }
     };
@@ -127,6 +201,64 @@ export function useEventoHoje() {
         }
     };
 
+    // Function to replicate training 7 days ahead
+    const replicarTreino = async (treinoOriginal) => {
+        try {
+            // Calculate the new date (7 days from the original date)
+            const dataOriginal = new Date(treinoOriginal.data_treino);
+            const novaData = new Date(dataOriginal);
+            novaData.setDate(novaData.getDate() + 7);
+
+            // First, get the passos of the original training
+            console.log('Buscando passos do treino original:', treinoOriginal.id);
+            const passosOriginais = await getPassosTreino(treinoOriginal.id);
+            console.log('Passos encontrados:', passosOriginais);
+
+            // Prepare passos for new training (remove id and add to new training)
+            const passosParaNovoTreino = passosOriginais.map(passo => ({
+                nome: passo.nome,
+                repeticoes: passo.repeticoes,
+                peso: passo.peso,
+                series: passo.series
+            }));
+
+            // First, create the training without data_treino
+            const treinoParaCriar = {
+                nome: treinoOriginal.nome,
+                descricao: treinoOriginal.descricao,
+                anotacoes: treinoOriginal.anotacoes,
+                usuario_id: treinoOriginal.Usuario_id,
+                passos: passosParaNovoTreino // Include the passos
+            };
+
+            console.log('Criando treino base com passos:', treinoParaCriar);
+            const resultadoCriacao = await criarTreino(treinoParaCriar);
+            console.log('Treino criado:', resultadoCriacao);
+
+            // Get the ID of the created training
+            const treinoId = resultadoCriacao[0]?.insertId;
+            if (!treinoId) {
+                throw new Error('Failed to get training ID');
+            }
+
+            // Now update the training with data_treino
+            const dadosParaAtualizar = {
+                data_treino: novaData.toISOString().slice(0, 19).replace('T', ' '),
+                repetir: treinoOriginal.repetir,
+                dia_semana: treinoOriginal.dia_semana
+            };
+
+            console.log('Atualizando treino com data:', dadosParaAtualizar);
+            const resultadoAtualizacao = await atualizarTreinoComData(treinoId, dadosParaAtualizar);
+            console.log('Treino replicado com sucesso:', resultadoAtualizacao);
+
+            return resultadoAtualizacao;
+        } catch (error) {
+            console.error('Erro ao replicar treino:', error);
+            throw error;
+        }
+    };
+
     // Main function to check and create notifications
     const verificarECriarNotificacoes = async (userId) => {
         try {
@@ -134,48 +266,21 @@ export function useEventoHoje() {
             console.log('User ID:', userId);
             console.log('Data de hoje:', dataHoje);
 
-            // 1. Verificar lastCheck
-            const lastCheckData = await getLastCheck(userId);
-            console.log('Last check data:', lastCheckData);
-
-            if (!lastCheckData.last_check) {
-                console.log('Usuário não tem last_check, continuando...');
-            } else {
-                const lastCheckDate = new Date(lastCheckData.last_check);
-                const lastCheckFormatada = lastCheckDate.toLocaleDateString('pt-BR');
-                console.log('Last check formatada:', lastCheckFormatada);
-                console.log('Data de hoje:', dataHoje);
-
-                // Se já foi verificado hoje, não faz nada
-                if (lastCheckFormatada === dataHoje) {
-                    console.log('Já foi verificado hoje, saindo...');
-                    return {
-                        success: true,
-                        message: 'Já verificado hoje',
-                        notificationsCreated: 0
-                    };
-                }
-            }
-
-            console.log('Não foi verificado hoje, buscando eventos e treinos...');
-
-            // 2. Buscar eventos e treinos
+            // Buscar eventos e treinos
             const eventosResponse = await getAllEventos(userId);
-            // TODO: MODIFICAR DEPOIS - BUSCA DE TREINOS
-            // const treinosResponse = await getAllTreinos(userId);
+            const treinosResponse = await getAllTreinos(userId);
 
             console.log('Eventos response:', eventosResponse);
-            // console.log('Treinos response:', treinosResponse);
+            console.log('Treinos response:', treinosResponse);
 
             // Extrair arrays de dados
             const eventos = eventosResponse.resposta || eventosResponse || [];
-            // TODO: MODIFICAR DEPOIS - ARRAY DE TREINOS
-            // const treinos = treinosResponse.resposta || treinosResponse || [];
+            const treinos = treinosResponse.resposta || treinosResponse || [];
 
             console.log('Eventos array:', eventos);
-            // console.log('Treinos array:', treinos);
+            console.log('Treinos array:', treinos);
 
-            // 3. Filtrar eventos e treinos de hoje
+            // Filtrar eventos e treinos de hoje
             const eventosHoje = eventos.filter((evento) => {
                 if (!evento.data) return false;
                 const eventoData = new Date(evento.data);
@@ -184,21 +289,21 @@ export function useEventoHoje() {
                 return eventoDataFormatada === dataHoje;
             });
 
-            // TODO: MODIFICAR DEPOIS - FILTRAGEM DE TREINOS
-            // const treinosHoje = treinos.filter((treino) => {
-            //     if (!treino.data) return false;
-            //     const treinoData = new Date(treino.data);
-            //     const treinoDataFormatada = treinoData.toLocaleDateString('pt-BR');
-            //     console.log('Treino data:', treinoDataFormatada, 'vs hoje:', dataHoje);
-            //     return treinoDataFormatada === dataHoje;
-            // });
+            const treinosHoje = treinos.filter((treino) => {
+                if (!treino.data_treino) return false;
+                const treinoData = new Date(treino.data_treino);
+                const treinoDataFormatada = treinoData.toLocaleDateString('pt-BR');
+                console.log('Treino data:', treinoDataFormatada, 'vs hoje:', dataHoje);
+                return treinoDataFormatada === dataHoje;
+            });
 
             console.log('Eventos de hoje:', eventosHoje);
-            // console.log('Treinos de hoje:', treinosHoje);
+            console.log('Treinos de hoje:', treinosHoje);
 
-            // 4. Criar notificações
+            // Criar notificações e replicar treinos
             const notificacoesCriadas = [];
             let totalNotificacoes = 0;
+            let treinosReplicados = 0;
 
             // Criar notificações para eventos
             for (const evento of eventosHoje) {
@@ -218,37 +323,45 @@ export function useEventoHoje() {
                 }
             }
 
-            // TODO: MODIFICAR DEPOIS - CRIAÇÃO DE NOTIFICAÇÕES PARA TREINOS
-            // Criar notificações para treinos
-            // for (const treino of treinosHoje) {
-            //     const notificacao = {
-            //         nome: treino.nome || 'Treino',
-            //         assunto: treino.descricao || 'Você tem um treino hoje!',
-            //         tipo: 'Treino'
-            //     };
+            // Criar notificações para treinos e replicar se necessário
+            for (const treino of treinosHoje) {
+                const notificacao = {
+                    nome: treino.nome || 'Treino',
+                    assunto: treino.descricao || 'Você tem um treino hoje!',
+                    tipo: 'Treino'
+                };
 
-            //     try {
-            //         await criarNotificacao(userId, notificacao);
-            //         notificacoesCriadas.push(notificacao);
-            //         totalNotificacoes++;
-            //         console.log('Notificação criada para treino:', treino.nome);
-            //     } catch (error) {
-            //         console.error('Erro ao criar notificação para treino:', error);
-            //     }
-            // }
+                try {
+                    await criarNotificacao(userId, notificacao);
+                    notificacoesCriadas.push(notificacao);
+                    totalNotificacoes++;
+                    console.log('Notificação criada para treino:', treino.nome);
 
-            // 5. Atualizar lastCheck
-            await updateLastCheck(userId);
-            console.log('Last check atualizado com sucesso');
+                    // Verificar se o treino se repete (repetir = 1)
+                    if (treino.repetir === 1) {
+                        try {
+                            await replicarTreino(treino);
+                            treinosReplicados++;
+                            console.log('Treino replicado automaticamente:', treino.nome);
+                        } catch (error) {
+                            console.error('Erro ao replicar treino:', error);
+                        }
+                    }
+                } catch (error) {
+                    console.error('Erro ao criar notificação para treino:', error);
+                }
+            }
 
             console.log('=== VERIFICAÇÃO CONCLUÍDA ===');
             console.log('Total de notificações criadas:', totalNotificacoes);
+            console.log('Total de treinos replicados:', treinosReplicados);
             console.log('Notificações criadas:', notificacoesCriadas);
 
             return {
                 success: true,
-                message: `Verificação concluída. ${totalNotificacoes} notificações criadas.`,
+                message: `Verificação concluída. ${totalNotificacoes} notificações criadas, ${treinosReplicados} treinos replicados.`,
                 notificationsCreated: totalNotificacoes,
+                trainingsReplicated: treinosReplicados,
                 notifications: notificacoesCriadas
             };
 
@@ -282,9 +395,13 @@ export function useEventoHoje() {
         dataHoje,
         updateLastCheck,
         getLastCheck,
-        getAllTreinos, // TODO: MODIFICAR DEPOIS - FUNÇÃO DE TREINOS
+        getAllTreinos,
+        getPassosTreino,
+        criarTreino,
+        atualizarTreinoComData,
         getAllEventos,
         criarNotificacao,
+        replicarTreino,
         verificarECriarNotificacoes,
         testarFuncoes
     };

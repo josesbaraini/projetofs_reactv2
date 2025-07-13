@@ -14,7 +14,7 @@ export default function Notificacoes() {
   );
 }
 function NotificacoesConteudo() {
-  const {usuario} = useUser();
+  const { usuario } = useUser();
   const [dados, setdados] = useState([
     {
       "id": 0,
@@ -39,7 +39,7 @@ function NotificacoesConteudo() {
     setdados(data);
   };
 
-  const lerNotificacoes = async () =>{
+  const lerNotificacoes = async () => {
     if (!usuario?.id) return;
     const notificacoesIDs = dados.map(item => item.id)
     for (let index = 0; index < notificacoesIDs.length; index++) {
@@ -50,7 +50,7 @@ function NotificacoesConteudo() {
           'Content-Type': 'application/json'
         }
       });
-      
+
     }
   }
   useEffect(() => {
@@ -67,22 +67,24 @@ function NotificacoesConteudo() {
 
   return (
     <div className={styles.page}>
-      {dados ? dados.map((notificacao, index) =>
-        <div key={index} className={styles.divcompleta}>
-          <div className={styles.assunto}>
-            <p>{notificacao.assunto}</p>
+      
+        {dados ? dados.map((notificacao, index) =>
+          <div key={index} className={styles.divcompleta}>
+            <div className={styles.assunto}>
+              <p>{notificacao.assunto}</p>
+            </div>
+            <div className={styles.tipo}>
+              <p>{notificacao.tipo}</p>
+            </div>
+            <div className={styles.data}>
+              <p>{formatarDataApenas(notificacao.hora)}</p>
+            </div>
+            <div className={styles.pessoa}>
+              <p>{notificacao.nome}</p>
+            </div>
           </div>
-          <div className={styles.tipo}>
-            <p>{notificacao.tipo}</p>
-          </div>
-          <div className={styles.data}>
-            <p>{formatarDataApenas(notificacao.hora)}</p>
-          </div>
-          <div className={styles.pessoa}>
-            <p>{notificacao.nome}</p>
-          </div>
-        </div>
-      ) : ''}
+        ) : ''}
+      
     </div>
   );
 }
