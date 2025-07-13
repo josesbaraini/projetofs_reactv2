@@ -87,7 +87,7 @@ const HeaderConteudo = () => {
     }, [usuario]);
 
     return (<>{isLogged
-        ? <header className={styles.header}>
+        ?<header className={styles.header}>
 
             <div onClick={() => router.push('/principal')} className={styles.logo}>
                 <Image src='/images/logo.png' alt='logo' width={60} height={60} />
@@ -157,7 +157,7 @@ const HeaderConteudo = () => {
 
 export default function Header() {
     return (
-        <StatusGate>
+        <StatusGate redirect={false}>
             <HeaderConteudo />
         </StatusGate>
     );

@@ -6,6 +6,7 @@ import { useUser } from '../UserContext';
 import apiRoutes from "@/utils/apiRoutes";
 
 function GateConteudo({ children, redirect = true }) {
+  console.log(redirect)
   const { usuario, setUsuario } = useUser();
   const [status, setStatus] = useState("loading");
   const router = useRouter()
@@ -41,9 +42,7 @@ function GateConteudo({ children, redirect = true }) {
   }, [router, redirect]);
 
   // Se não deve redirecionar e não está autenticado, não renderiza nada
-  if (!redirect && status === "not-authenticated") {
-    return null;
-  }
+
 
   return (
     children
